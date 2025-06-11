@@ -1,0 +1,242 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f3f3f3;
+}
+
+.peta-container {
+    display: flex;
+    height: 125vh;
+}
+
+.sidebar {
+    width: 200px;
+    border-radius: 20px;
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 5px #ccc;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+}
+
+.sidebar .menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .menu li {
+    padding: 15px;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.sidebar .menu li.active {
+    background: #b49de6;
+    color: white;
+}
+
+.sidebar .menu li:hover {
+    background: #e0d4fc;
+}
+
+.logout {
+    margin-top: auto;
+}
+
+.main-content {
+    flex: 1;
+    padding: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header .icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.icons .icon {
+    background-color: #6C48C5;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    padding: 8px;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.bg_peta {
+    height: 900px;
+    width: 1260px;
+}
+
+.footer-content {
+    background: url('/images/Peta_BG.png') no-repeat center/cover;
+    min-height: 870px;
+    display: flex;
+}
+
+.desc {
+    color: white;
+    display: block;
+    margin-top: 5px;
+}
+
+ul .journey {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0;
+}
+
+ul.journey li.lvl1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 200px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+ul.journey li.peta-icon {
+  display: flex;
+  height: 120px;
+  padding-top: 0;
+  margin-left: auto;
+}
+
+ul.journey li.chain1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.journey li.lvl2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 200px;
+  text-align: center;
+}
+
+ul.journey li.chain2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.journey li.lvl3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 200px;
+  text-align: center;
+}
+
+ul.journey li.chain3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.journey li.lvl4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 200px;
+  text-align: center;
+}
+
+ul.journey li.chain4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.journey li.lvl5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 200px;
+  text-align: center;
+}
+
+ul.journey li.chain5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.journey li.lvl6-9 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 200px;
+  text-align: center;
+}
+
+ul.journey li.chain6-9 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.journey li.lvl10 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 200px;
+  text-align: center;
+}
+
+ul.journey li.chain10 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.journey li.the-end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 200px;
+  text-align: center;
+}
