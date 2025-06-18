@@ -9,7 +9,7 @@ class UserMiddleware
 {
     public function handle($request, Closure $next)
     {
-        if (!Auth::guard('web')->check()) {
+        if (!Auth::check()) {
             return redirect('/login')->withErrors(['Akses ditolak.']);
         }
 

@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -28,12 +30,37 @@ class AuthController extends Controller
 
         if (Auth::guard('web')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/homepage');
+            Session::put('login_step', 'login2');
+            return redirect()->route('login2');
         }
 
         return back()->withErrors([
             'email' => 'Email atau password salah',
         ]);
+    }
+
+    public function showLogin2Form()
+    {
+        if (Session::get('login_step') !== 'login2' && !Auth::check()) {
+            return redirect()->route('login');
+        }
+        return view('auth.login2');
+    }
+
+    public function showLogin3Form()
+    {
+        if (Session::get('login_step') !== 'login3' && !Auth::check()) {
+            return redirect()->route('login');
+        }
+        return view('auth.login3');
+    }
+
+    public function showLogin4Form()
+    {
+        if (Session::get('login_step') !== 'login4' && !Auth::check()) {
+            return redirect()->route('login');
+        }
+        return view('auth.login4');
     }
 
     public function showRegisterForm()
@@ -56,6 +83,45 @@ class AuthController extends Controller
         ]);
 
         return redirect('/login')->with('success', 'Akun berhasil dibuat. Silakan login.');
+    }
+
+    public function showForgotForm()
+    {
+        return view('auth.lupaPassword');
+    }
+
+    public function handleForgotPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+        ]);
+
+        return redirect()->route('resetPasswordForm')->with('email', $request->email);
+    }
+
+    public function showResetPasswordForm()
+    {
+        $email = session('email');
+
+        if (!$email) {
+            return redirect()->route('lupaPassword')->withErrors('Email tidak ditemukan. Silakan coba lagi.');
+        }
+
+        return view('auth.lupaPassword1', compact('email'));
+    }
+
+    public function resetPasswordManual(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+            'new_password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $user = \App\Models\User::where('email', $request->email)->first();
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return redirect()->route('login')->with('success', 'Password berhasil diubah.');
     }
 
     public function logout(Request $request)
