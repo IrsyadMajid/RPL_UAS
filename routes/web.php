@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -16,9 +17,10 @@ Route::get('/reset-password-form', [AuthController::class, 'showResetPasswordFor
 Route::post('/reset-password-manual', [AuthController::class, 'resetPasswordManual'])->name('password.manual.reset');
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'user'])->name('dashboard');
+Route::get('/homepage', function () {
+    return view('homepage');
+})->middleware(['auth'])->name('homepage');
+
 Route::get('/halaman1', function () {
     return view('storylogin.halaman1');
 })->name('halaman1');
@@ -49,6 +51,14 @@ Route::get('/halaman9', function () {
 Route::get('/halaman10', function () {
     return view('storylogin.halaman10');
 })->name('halaman10');
+
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
 
 Route::get('/adminpage', function () {
     return view('adminpage');

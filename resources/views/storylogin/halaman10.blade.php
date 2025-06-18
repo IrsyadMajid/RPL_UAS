@@ -15,7 +15,7 @@
 </body>
 <script>
     document.querySelector('.fixed-button').addEventListener('click', function() {
-        window.location.href = '{{ route('dashboard') }}';
+        window.location.href = '{{ route('homepage') }}';
     });
 </script>
 </html>
