@@ -57,6 +57,6 @@
         </div>
         <div class="login-image"></div>
     </div>
-    <script src="{{ asset('js/Login/script.css') }}"></script>
+    <script src="{{ asset('js/Login/script.js') }}"></script>
 </body>
 </html>

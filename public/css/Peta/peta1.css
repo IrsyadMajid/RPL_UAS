@@ -1,0 +1,1305 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 40px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu a,
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.menu a.active {
+  background-color: #c7a8f3;
+  color: white;
+}
+
+.menu a img,
+.logout img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.logout {
+  margin-top: auto;
+  cursor: pointer;
+}
+
+/* MAIN AREA */
+.main {
+  flex: 1;
+  overflow-y: auto;
+  background-image: url('/images/Peta/bg-peta.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* HEADER */
+.main-header {
+  width: 100%;
+  height: 10%;
+  background-color: #ffffff;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+
+.top-right-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-button {
+  background-color: #7c4dff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.profile-image {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+/* PETA TITLE */
+.peta-title {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 0 32px 32px 32px;
+}
+
+/* MAP CONTAINER */
+.peta-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.jalur {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 20px;
+}
+
+.level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 120px;
+  min-height: 140px;
+}
+
+.bintang {
+  width: 64px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.level p {
+  color: white;
+  font-size: 14px;
+  line-height: 1.5rem;
+}
+
+.line {
+  width: 130px;
+  height: 2px;
+  border-top: 2px dashed white;
+  padding: 1.5rem;
+}
+
+.line2 {
+  width: 130px;
+  height: 2px;
+  border-top: 2px dashed white;
+  padding: 1.5rem;
+}
+
+.line-vertical {
+  width: 2px;
+  height: 60px;
+  border-left: 2px dashed white;
+  margin: 2rem 0;
+  align-self: flex-start;
+  margin-left: 62rem;
+}
+
+/* POPUP LEVEL 1*/
+.popup1-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup1-content {
+  background: rgba(245, 243, 243, 0.363);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* untuk Safari */
+  border-radius: 25px;
+  padding: 2rem;
+  max-width: 980px;
+  width: 70%;
+  height: 400px;
+  color: white;
+  position: relative;
+}
+
+.close1-popup {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.popup1-flex {
+  display: flex;
+  gap: 2rem;
+}
+
+.popup1-character img {
+  max-width: 280px;
+  height: auto;
+  margin-top: -65px;
+}
+
+.popup1-info h2 {
+  color: #f6ac32;
+  margin-top: 10px;
+}
+
+.popup1-info p {
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+.quest1-label {
+  color: #f6ac32;
+  font-weight: bold;
+  margin-top: 80px;
+}
+
+.quest1-box {
+  background: #6a46d1;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.quest1-box:hover {
+  background: #7a5bd8;
+}
+
+.quest1-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quest1-icon img{
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.quest1-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #eaeaea;
+}
+
+.quest1-xp {
+  background: #f6ac32;
+  padding: 0.4rem 1rem;
+  border-radius: 25px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* FORM SETELAH POP UP */
+/* Container Popup */
+.popup12-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Isi Popup */
+.popup12-content {
+  background: rgba(245, 243, 243, 0.363);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 2rem;
+  max-width: 1000px;
+  width: 90%;
+  height: 500px;
+  color: white;
+  position: relative;
+}
+
+/* Tombol Close */
+.close12-popup {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Judul dan Deskripsi */
+.popup12-content h2 {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #f4a825;
+  margin-bottom: 0.5rem;
+}
+
+.popup12-content p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  padding-top: -0.5rem;
+}
+
+/* Label Form */
+.popup12-content label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.3rem;
+  margin-top: 0.2rem;
+}
+
+/* Input Form */
+.popup12-content input[type="text"] {
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Tombol Upload File */
+.upload12-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.9rem 2.5rem;
+  border: 1.5px solid #a472f5;
+  border-radius: 10px;
+  font-weight: 500;
+  color: #a472f5;
+  cursor: pointer;
+  margin-top: -3rem;
+  transition: background 0.2s ease;
+  background-color: transparent;
+  width: fit-content;
+  max-width: 300px;
+  white-space: nowrap;
+}
+.upload12-btn:hover {
+  background: rgba(164, 114, 245, 0.1);
+}
+.upload12-btn input[type="file"] {
+  display: none;
+}
+
+/* Tombol Kirim */
+.submit12-btn {
+  margin-top: -3rem;
+  background-color: #b095e4;
+  color: white;
+  border: none;
+  padding: 0.9rem 3rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  float: right;
+}
+.submit12-btn:hover {
+  background-color: #977dd3;
+}
+
+/* QUEST ALERT 1*/
+/* Container */
+.quest-alert {
+  position: fixed;
+  top: 70px;
+  right: -400px; /* awalnya di luar layar */
+  width: 330px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 20px 0 0 20px;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #000;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+/* XP Highlight */
+.quest-alert span {
+  font-weight: 600;
+  color: #7a4de3;
+}
+
+/* Class untuk tampil */
+.quest-alert.show {
+  right: 20px;
+  opacity: 1;
+}
+
+/* Class untuk sembunyi */
+.quest-alert.hide {
+  right: -400px;
+  opacity: 0;
+}
+
+/* QUEST ALERT 2*/
+/* Container */
+.quest-alert2 {
+  position: fixed;
+  top: 130px;
+  right: -400px; /* awalnya di luar layar */
+  width: 250px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 20px 0 0 20px;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #000;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+/* XP Highlight */
+.quest-alert2 span {
+  font-weight: 600;
+  color: #7a4de3;
+}
+
+/* Class untuk tampil */
+.quest-alert2.show {
+  right: 20px;
+  opacity: 1;
+}
+
+/* Class untuk sembunyi */
+.quest-alert2.hide {
+  right: -400px;
+  opacity: 0;
+}
+
+/* Level 2 */
+/* POPUP LEVEL 2*/
+.popup2-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup2-content {
+  background: rgba(245, 243, 243, 0.363);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* untuk Safari */
+  border-radius: 25px;
+  padding: 2rem;
+  max-width: 980px;
+  width: 70%;
+  height: 400px;
+  color: white;
+  position: relative;
+}
+
+.close2-popup {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.popup2-flex {
+  display: flex;
+  gap: 2rem;
+}
+
+.popup2-character img {
+  max-width: 280px;
+  height: auto;
+  margin-top: -20px;
+}
+
+.popup2-info h2 {
+  color: #f6ac32;
+  margin-top: 10px;
+}
+
+.popup2-info p {
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+.quest2-label {
+  color: #f6ac32;
+  font-weight: bold;
+  margin-top: 80px;
+}
+
+.quest2-box {
+  background: #6a46d1;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.quest2-box:hover {
+  background: #7a5bd8;
+}
+
+.quest2-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quest2-icon img{
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.quest2-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #eaeaea;
+}
+
+.quest2-xp {
+  background: #f6ac32;
+  padding: 0.4rem 1rem;
+  border-radius: 25px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* FORM SETELAH POPUP2 */
+/* Container */
+.popup21-pembimbing-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Content */
+.popup21-pembimbing-content {
+  background: rgba(245, 243, 243, 0.363);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 2rem;
+  max-width: 1000px;
+  width: 90%;
+  height: 500px;
+  color: white;
+  position: relative;
+}
+
+/* Close Button */
+.close21-popup-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Heading & Paragraph */
+.popup21-pembimbing-content h2 {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #f4a825;
+  margin-bottom: 0.5rem;
+}
+.popup21-pembimbing-content p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  padding-top: -0.5rem;
+}
+
+/* Form Elements */
+.popup21-pembimbing-content label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.1rem;
+  margin-top: 0.2rem;
+}
+
+.popup21-pembimbing-content select,
+.popup21-pembimbing-content input[type="text"] {
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Submit Button */
+.submit21-btn {
+  margin-top: 1.5rem;
+  background-color: #b095e4;
+  color: white;
+  border: none;
+  padding: 0.5rem 2.5rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  float: right;
+}
+.submit21-btn:hover {
+  background-color: #977dd3;
+}
+
+/* QUEST ALERT 2*/
+/* Container */
+.quest-alert3 {
+  position: fixed;
+  top: 70px;
+  right: -400px; /* awalnya di luar layar */
+  width: 330px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 20px 0 0 20px;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #000;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+/* XP Highlight */
+.quest-alert3 span {
+  font-weight: 600;
+  color: #7a4de3;
+}
+
+/* Class untuk tampil */
+.quest-alert3.show {
+  right: 20px;
+  opacity: 1;
+}
+
+/* Class untuk sembunyi */
+.quest-alert3.hide {
+  right: -400px;
+  opacity: 0;
+}
+
+/* QUEST ALERT 4*/
+/* Container */
+.quest-alert4 {
+  position: fixed;
+  top: 130px;
+  right: -400px; /* awalnya di luar layar */
+  width: 250px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 20px 0 0 20px;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #000;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+/* XP Highlight */
+.quest-alert4 span {
+  font-weight: 600;
+  color: #7a4de3;
+}
+
+/* Class untuk tampil */
+.quest-alert4.show {
+  right: 20px;
+  opacity: 1;
+}
+
+/* Class untuk sembunyi */
+.quest-alert4.hide {
+  right: -500px;
+  opacity: 0;
+}
+
+/* LEVEL 3 */
+.popup3-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup3-content {
+  background: rgba(245, 243, 243, 0.363);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* untuk Safari */
+  border-radius: 25px;
+  padding: 2rem;
+  max-width: 980px;
+  width: 70%;
+  height: 400px;
+  color: white;
+  position: relative;
+}
+
+.close3-popup {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.popup3-flex {
+  display: flex;
+  gap: 2rem;
+}
+
+.popup3-character img {
+  max-width: 280px;
+  height: auto;
+  margin-top: -20px;
+}
+
+.popup3-info h2 {
+  color: #f6ac32;
+  margin-top: 10px;
+}
+
+.popup3-info p {
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+.quest3-label {
+  color: #f6ac32;
+  font-weight: bold;
+  margin-top: 80px;
+}
+
+.quest3-box {
+  background: #6a46d1;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.quest3-box:hover {
+  background: #7a5bd8;
+}
+
+.quest3-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quest3-icon img{
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.quest3-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #eaeaea;
+}
+
+.quest3-xp {
+  background: #f6ac32;
+  padding: 0.4rem 1rem;
+  border-radius: 25px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* FORM AJUAN JUDUL*/
+.popup31-judul-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup31-judul-content {
+  background: rgba(245, 243, 243, 0.363);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 2rem;
+  max-width: 1000px;
+  width: 90%;
+  height: 300px;
+  color: white;
+  position: relative;
+}
+
+/* Tombol Close */
+.close31-popup {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.popup31-judul-content h2 {
+  color: #f4af3d;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.popup31-judul-content p {
+  font-size: 1rem;
+  margin-bottom: 2.3rem;
+  line-height: 1.6;
+  padding-top: -0.5rem;
+}
+
+#form31-judul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 16px;
+}
+
+#form31-judul input[type="text"] {
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+}
+
+#submit31-judul {
+  align-self: flex-end;
+  background-color: #b095e4;
+  color: white;
+  border: none;
+  padding: 0.5rem 2.5rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#submit31-judul:hover {
+  background-color: #977dd3;
+}
+
+
+.submit31-judul-btn:hover {
+  background-color: #5932be;
+}
+
+/* QUEST ALERT 3*/
+/* Container */
+.quest-alert5 {
+  position: fixed;
+  top: 70px;
+  right: -400px; /* awalnya di luar layar */
+  width: 330px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 20px 0 0 20px;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #000;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+/* XP Highlight */
+.quest-alert5 span {
+  font-weight: 600;
+  color: #7a4de3;
+}
+
+/* Class untuk tampil */
+.quest-alert5.show {
+  right: 20px;
+  opacity: 1;
+}
+
+/* Class untuk sembunyi */
+.quest-alert5.hide {
+  right: -400px;
+  opacity: 0;
+}
+
+/* QUEST ALERT 4*/
+/* Container */
+.quest-alert6 {
+  position: fixed;
+  top: 130px;
+  right: -400px; /* awalnya di luar layar */
+  width: 250px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 20px 0 0 20px;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #000;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+/* XP Highlight */
+.quest-alert6 span {
+  font-weight: 600;
+  color: #7a4de3;
+}
+
+/* Class untuk tampil */
+.quest-alert6.show {
+  right: 20px;
+  opacity: 1;
+}
+
+/* Class untuk sembunyi */
+.quest-alert6.hide {
+  right: -500px;
+  opacity: 0;
+}
+
+/* Level 4 */
+.popup4-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup4-content {
+  background: rgba(245, 243, 243, 0.363);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* untuk Safari */
+  border-radius: 25px;
+  padding: 2rem;
+  max-width: 980px;
+  width: 70%;
+  height: 400px;
+  color: white;
+  position: relative;
+}
+
+.close4-popup {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.popup4-flex {
+  display: flex;
+  gap: 2rem;
+}
+
+.popup4-character img {
+  max-width: 280px;
+  height: auto;
+  margin-top: -20px;
+}
+
+.popup4-info h2 {
+  color: #f6ac32;
+  margin-top: 10px;
+}
+
+.popup4-info p {
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+.quest4-label {
+  color: #f6ac32;
+  font-weight: bold;
+  margin-top: 80px;
+}
+
+.quest4-box {
+  background: #6a46d1;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.quest4-box:hover {
+  background: #7a5bd8;
+}
+
+.quest4-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quest4-icon img{
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.quest4-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #eaeaea;
+}
+
+.quest4-xp {
+  background: #f6ac32;
+  padding: 0.4rem 1rem;
+  border-radius: 25px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Banyak Bimbingan */
+.popup41-bimbingan-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+}
+
+/* Popup Box */
+.popup41-content {
+  background: rgba(245, 243, 243, 0.363);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 2rem;
+  max-width: 1000px;
+  width: 90%;
+  height: 300px;
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+/* Close Button */
+.close41-popup-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Judul */
+.popup41-content h2 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #f4a825;
+  margin-bottom: 0.5rem;
+}
+
+/* Deskripsi */
+.popup41-content p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Progress Box as Button */
+.progress-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 2rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  color: white;
+  font: inherit;
+  border: none; /* hilangkan border default tombol */
+  outline: none;
+}
+
+.progress-box:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Icon (emoji atau image) */
+.progress-icon {
+  font-size: 1.8rem;
+  margin-right: 1rem;
+}
+
+/* Teks penjelas progress */
+.progress-text {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Jumlah progress */
+.progress-count {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* QUEST ALERT 7*/
+/* Container */
+.quest-alert7 {
+  position: fixed;
+  top: 70px;
+  right: -400px; /* awalnya di luar layar */
+  width: 330px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 20px 0 0 20px;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #000;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+/* XP Highlight */
+.quest-alert7 span {
+  font-weight: 600;
+  color: #7a4de3;
+}
+
+/* Class untuk tampil */
+.quest-alert7.show {
+  right: 20px;
+  opacity: 1;
+}
+
+/* Class untuk sembunyi */
+.quest-alert7.hide {
+  right: -400px;
+  opacity: 0;
+}
+
+/* QUEST ALERT 8*/
+/* Container */
+.quest-alert8 {
+  position: fixed;
+  top: 130px;
+  right: -400px; /* awalnya di luar layar */
+  width: 250px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 20px 0 0 20px;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #000;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+/* XP Highlight */
+.quest-alert8 span {
+  font-weight: 600;
+  color: #7a4de3;
+}
+
+/* Class untuk tampil */
+.quest-alert8.show {
+  right: 20px;
+  opacity: 1;
+}
+
+/* Class untuk sembunyi */
+.quest-alert8.hide {
+  right: -500px;
+  opacity: 0;
+}

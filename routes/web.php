@@ -28,7 +28,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-    Route::get('/peta', function () { return view('peta'); })->name('peta');
+    Route::get('/peta1', function () { return view('peta.peta1'); })->name('peta.peta1');
+    Route::get('/peta2', function () { return view('peta.peta2'); })->name('peta.peta2');
     Route::get('/mentoring', function () { return view('mentoring'); })->name('mentoring');
     Route::get('/peringkat', function () { return view('peringkat'); })->name('peringkat');
     Route::get('/library', function () { return view('library'); })->name('library');

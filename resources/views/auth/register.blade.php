@@ -72,6 +72,6 @@
         </div>
         <div class="login-image"></div>
     </div>
-    <script src="{{ asset('js/Register/script.css') }}"></script>
+    <script src="{{ asset('js/Register/script.js') }}"></script>
 </body>
 </html>
