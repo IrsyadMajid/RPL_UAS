@@ -23,10 +23,10 @@
 
         <main class="main">
             <header>
-                <h2>Selamat Datang, Berlian Ika!</h2>
+                <h2>Selamat Datang, {{ auth()->user()->fullname ?? auth()->user()->name }}!</h2>
                 <div class="top-right-icons">
                     <button class="icon-button">
-                    <i class="fa-solid fa-bell"></i>
+                        <i class="fa-solid fa-bell"></i>
                     </button>
                     <a href="{{ route('profile') }}"><img src="{{ asset('images/Dashboard/profile-dashboard.jpg') }}" alt="Profile" class="profile-image" /></a>
                 </div>
@@ -35,8 +35,8 @@
         <section class="level-section">
             <div class="level-card">
             <div class="level-text">
-                <span class="level-badge">Level 1 - Gerbang Arcana</span>
-                <div class="level-progress"><small>5/65</small></div>
+                <span class="level-badge">Level {{ auth()->user()->level }} - {{ auth()->user()->level_name }}</span>
+                <div class="level-progress"><small>{{ auth()->user()->xp }}/{{ auth()->user()->xp_for_next_level }}</small></div>
             </div>
             <img src="{{ asset('images/Dashboard/bg-dashboard.png') }}" alt="Portal" class="portal-bg" />
             <img src="{{ asset('images/Dashboard/k-bima-dashboard.png') }}" alt="Karakter" class="character" />
@@ -50,32 +50,22 @@
                     <th>Konsistensi</th>
                     </tr>
                 </thead>
-            <tbody>
-                <tr>
-                    <td>🥇</td>
-                    <td>M. Irsyad Majid</td>
-                    <td>10</td>
-                    <td>98%</td>
-                </tr>
-                <tr>
-                    <td>🥈</td>
-                    <td>Lucky Fitrianda</td>
-                    <td>10</td>
-                    <td>96%</td>
-                </tr>
-                <tr>
-                    <td>🥉</td>
-                    <td>M. Rafathar A.</td>
-                    <td>10</td>
-                    <td>92%</td>
-                </tr>
-                <tr class="you">
-                    <td>156</td>
-                    <td>Berlian Ika</td>
-                    <td>1</td>
-                    <td>100%</td>
-                </tr>
-            </tbody>
+                <tbody>
+                    @foreach($rankingData as $rank)
+                    <tr>
+                        <td>{{ $rank['rank'] }}</td>
+                        <td>{{ $rank['name'] }}</td>
+                        <td>{{ $rank['level'] }}</td>
+                        <td>{{ $rank['consistency'] }}</td>
+                    </tr>
+                    @endforeach
+                    <tr class="you">
+                        <td>{{ $userRank }}</td>
+                        <td>{{ auth()->user()->fullname ?? auth()->user()->name }}</td>
+                        <td>{{ auth()->user()->level }}</td>
+                        <td>100%</td>
+                    </tr>
+                    </tbody>
             </table>
         </div>
 
@@ -91,7 +81,10 @@
                 <div class="card quest">
                     <strong>🪄 Quest</strong>
                     <p>Beri nama tongkat sihirmu</p>
-                    <button>+60XP</button>
+                    <form action="{{ route('dashboard.completeQuest') }}" method="POST">
+                        @csrf
+                        <button type="submit">+10XP</button>
+                    </form>
                 </div>
             </section>
             </main>

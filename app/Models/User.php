@@ -24,7 +24,9 @@ class User extends Authenticatable
         'phone',
         'password',
         'gender',
-        'profile_photo'
+        'profile_photo',
+        'level',
+        'xp',
     ];
 
     /**
@@ -42,11 +44,50 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        'level' => 'integer',
+        'xp' => 'integer',
+    ];
+
+    public function getLevelNameAttribute()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+        $levelNames = [
+            1 => 'Gerbang Arcana',
+            2 => 'Mencari Mentor',
+            3 => 'Ritual Judul',
+            4 => 'Awal Perjalanan',
+            5 => 'Duel Proposal',
+            6 => 'Lembah Revisi Abadi',
+            7 => 'Lembah Revisi Abadi',
+            8 => 'Lembah Revisi Abadi',
+            9 => 'Lembah Revisi Abadi',
+            10 => 'Sidang Suci Arcana',
         ];
+
+        return $levelNames[$this->level] ?? 'Level ' . $this->level;
+    }
+
+    public function getXpForNextLevelAttribute()
+    {
+        if ($this->level === 1) {
+            return 10;
+        }
+
+        return 10;
+    }
+
+    public function addXp(int $amount): void
+    {
+        $this->xp += $amount;
+        $xpNeededForNextLevel = $this->getXpForNextLevelAttribute();
+
+        while ($this->xp >= $xpNeededForNextLevel) {
+            $this->xp -= $xpNeededForNextLevel;
+            $this->level++;
+            $xpNeededForNextLevel = $this->getXpForNextLevelAttribute();
+        }
+        $this->save();
     }
 }

@@ -1,219 +1,486 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Peta</title>
-    <link rel="stylesheet" href="{{ asset('css/peta.css') }}">
-</head>
-<body>
-    <div class="peta-container">
-        <aside class="sidebar">
-            <div class="logo">
-                <img src="/images/Logo_BIMA.png" alt="Logo BIMA">
-            </div>
-            <nav class="menu">
-                <ul>
-                    <li><i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M6 3.61809L1.2 6.03015V1.20603L6 3.61809ZM19.2 1.20603V6.03015L24 3.61809L19.2 1.20603ZM10.8 0V4.82412L15.6 2.41206L10.8 0ZM3.6 9.64824C5.28 10.2513 8.16 10.8543 12 10.8543C15.84 10.8543 18.72 10.2513 20.4 9.64824C20.4 9.40704 17.04 8.44221 12 8.44221C6.96 8.44221 3.6 9.52764 3.6 9.64824ZM15.6 18.0905H8.4V24C3.48 23.5176 0 22.191 0 20.5025V9.64824C0 7.59799 5.4 6.03015 12 6.03015C18.6 6.03015 24 7.59799 24 9.64824V20.5025C24 22.0704 20.52 23.5176 15.6 24V18.0905Z" fill="black"/>
-                        </svg>
-                    <a href="{{ route('homepage') }}"></i> Dashboard</li>
-                    <li class="active"><i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 24C10.34 24 8.78 23.6848 7.32 23.0544C5.86 22.424 4.59 21.5692 3.51 20.49C2.43 19.4108 1.5752 18.1408 0.945602 16.68C0.316002 15.2192 0.000801519 13.6592 1.51899e-06 12C-0.000798481 10.3408 0.314402 8.7808 0.945602 7.32C1.5768 5.8592 2.4316 4.5892 3.51 3.51C4.5884 2.4308 5.8584 1.576 7.32 0.9456C8.7816 0.3152 10.3416 0 12 0H13.2V9.93C13.56 10.15 13.85 10.4352 14.07 10.7856C14.29 11.136 14.4 11.5408 14.4 12C14.4 12.66 14.1652 13.2252 13.6956 13.6956C13.226 14.166 12.6608 14.4008 12 14.4C11.3392 14.3992 10.7744 14.1644 10.3056 13.6956C9.8368 13.2268 9.6016 12.6616 9.6 12C9.6 11.54 9.71 11.13 9.93 10.77C10.15 10.41 10.44 10.13 10.8 9.93V7.35C9.76 7.63 8.9 8.1952 8.22 9.0456C7.54 9.896 7.2 10.8808 7.2 12C7.2 13.32 7.67 14.45 8.61 15.39C9.55 16.33 10.68 16.8 12 16.8C13.32 16.8 14.45 16.33 15.39 15.39C16.33 14.45 16.8 13.32 16.8 12C16.8 11.28 16.6548 10.6152 16.3644 10.0056C16.074 9.396 15.6792 8.8608 15.18 8.4L16.89 6.69C17.59 7.35 18.15 8.1352 18.57 9.0456C18.99 9.956 19.2 10.9408 19.2 12C19.2 14 18.5 15.7 17.1 17.1C15.7 18.5 14 19.2 12 19.2C10 19.2 8.3 18.5 6.9 17.1C5.5 15.7 4.8 14 4.8 12C4.8 10.2 5.37 8.6352 6.51 7.3056C7.65 5.976 9.08 5.1708 10.8 4.89V2.46C8.42 2.76 6.4248 3.81 4.8144 5.61C3.204 7.41 2.3992 9.54 2.4 12C2.4 14.68 3.33 16.95 5.19 18.81C7.05 20.67 9.32 21.6 12 21.6C14.68 21.6 16.95 20.67 18.81 18.81C20.67 16.95 21.6 14.68 21.6 12C21.6 10.62 21.33 9.33 20.79 8.13C20.25 6.93 19.51 5.89 18.57 5.01L20.28 3.3C21.42 4.4 22.3252 5.6952 22.9956 7.1856C23.666 8.676 24.0008 10.2808 24 12C24 13.66 23.6848 15.22 23.0544 16.68C22.424 18.14 21.5692 19.41 20.49 20.49C19.4108 21.57 18.1408 22.4252 16.68 23.0556C15.2192 23.686 13.6592 24.0008 12 24Z" fill="black"/>
-                        </svg>
-                    <a href="{{ route('peta') }}"></i> Peta</li>
-                    <li><i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <g clip-path="url(#clip0_361_430)">
-                                <path d="M7.5 12.375C7.5 12.0766 7.61853 11.7905 7.8295 11.5795C8.04048 11.3685 8.32663 11.25 8.625 11.25H14.625C14.9234 11.25 15.2095 11.3685 15.4205 11.5795C15.6315 11.7905 15.75 12.0766 15.75 12.375C15.75 12.6734 15.6315 12.9595 15.4205 13.1705C15.2095 13.3815 14.9234 13.5 14.625 13.5H8.625C8.32663 13.5 8.04048 13.3815 7.8295 13.1705C7.61853 12.9595 7.5 12.6734 7.5 12.375ZM6 15.75C5.70163 15.75 5.41548 15.8685 5.2045 16.0795C4.99353 16.2905 4.875 16.5766 4.875 16.875C4.875 17.1734 4.99353 17.4595 5.2045 17.6705C5.41548 17.8815 5.70163 18 6 18H12C12.2984 18 12.5845 17.8815 12.7955 17.6705C13.0065 17.4595 13.125 17.1734 13.125 16.875C13.125 16.5766 13.0065 16.2905 12.7955 16.0795C12.5845 15.8685 12.2984 15.75 12 15.75H6Z" fill="black"/>
-                                <path d="M19.5002 -0.00750732C21.9812 -0.00750732 24.0002 1.98449 24.0002 4.49249C24.0002 5.96549 23.4932 7.39199 22.8257 8.71949C22.1612 10.038 21.2837 11.3565 20.4527 12.6015L20.4362 12.627C19.5842 13.9065 18.7802 15.1155 18.1847 16.296C17.5877 17.4795 17.2502 18.537 17.2502 19.5C17.2504 19.8887 17.3512 20.2707 17.5429 20.6089C17.7346 20.947 18.0107 21.2297 18.3442 21.4294C18.6776 21.6292 19.0572 21.7391 19.4458 21.7485C19.8344 21.7579 20.2188 21.6665 20.5615 21.4831C20.9043 21.2998 21.1937 21.0308 21.4015 20.7023C21.6094 20.3738 21.7286 19.9971 21.7475 19.6089C21.7665 19.2206 21.6845 18.8341 21.5097 18.4869C21.3348 18.1398 21.073 17.8439 20.7497 17.628C20.5114 17.4582 20.3486 17.2021 20.2959 16.9142C20.2433 16.6263 20.3049 16.3293 20.4677 16.086C20.6305 15.8428 20.8816 15.6726 21.1679 15.6116C21.4541 15.5505 21.7528 15.6034 22.0007 15.759C22.8032 16.2955 23.4119 17.0758 23.7369 17.9847C24.062 18.8936 24.0861 19.8829 23.8059 20.8066C23.5256 21.7303 22.9558 22.5393 22.1805 23.1144C21.4052 23.6894 20.4655 23.9999 19.5002 24H4.50022C3.30675 24 2.16216 23.5259 1.31824 22.682C0.474328 21.8381 0.000222143 20.6935 0.000222143 19.5C0.000222143 17.127 1.33672 14.7975 2.66572 12.741C2.98072 12.258 3.29222 11.785 3.60022 11.322C4.30972 10.2585 4.98472 9.24299 5.53072 8.24999H3.76522C2.90122 8.24999 1.69372 8.05049 0.904722 7.07549C0.3104 6.34678 -0.00965931 5.43278 0.000222143 4.49249C0.000222143 3.29902 0.474328 2.15443 1.31824 1.31051C2.16216 0.466598 3.30675 -0.00750732 4.50022 -0.00750732H19.5002ZM19.5002 2.24249C18.9035 2.24249 18.3312 2.47955 17.9092 2.9015C17.4873 3.32346 17.2502 3.89576 17.2502 4.49249C17.2502 5.20649 17.5847 5.74349 18.2507 6.19049C18.451 6.32475 18.6029 6.51982 18.6839 6.74693C18.765 6.97405 18.7709 7.22119 18.7008 7.45193C18.6307 7.68266 18.4884 7.88477 18.2947 8.02846C18.1011 8.17214 17.8664 8.24981 17.6252 8.24999H8.05222C7.35172 9.75449 6.34072 11.2725 5.39272 12.6945C5.10472 13.128 4.82122 13.551 4.55572 13.962C3.19522 16.0665 2.25022 17.874 2.25022 19.5C2.25022 20.0967 2.48728 20.669 2.90923 21.091C3.33119 21.5129 3.90349 21.75 4.50022 21.75H15.6017C15.2072 21.0658 14.9998 20.2898 15.0002 19.5C15.0002 18.0315 15.5072 16.608 16.1762 15.282C16.8377 13.971 17.7107 12.66 18.5387 11.418L18.5642 11.379C19.4162 10.0995 20.2187 8.89199 20.8157 7.70699C21.4127 6.52199 21.7502 5.46149 21.7502 4.49249C21.7502 3.23549 20.7467 2.24249 19.5002 2.24249ZM4.50022 2.24249C3.90349 2.24249 3.33119 2.47955 2.90923 2.9015C2.48728 3.32346 2.25022 3.89576 2.25022 4.49249C2.25022 4.97399 2.40022 5.34599 2.65522 5.65949C2.80072 5.83949 3.14272 5.99999 3.76522 5.99999H15.2762C15.0891 5.51964 14.9954 5.00798 15.0002 4.49249C15.0002 3.67349 15.2192 2.90399 15.6017 2.24249H4.50022Z" fill="black"/>
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_361_430">
-                                    <rect width="24" height="24" fill="white"/>
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    <a href="{{ route('mentoring') }}"></i> Mentoring</li>
-                    <li><i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M10.8 9.6H13.2C14.8968 9.6 15.7452 9.6 16.272 10.128C16.8 10.6548 16.8 11.5032 16.8 13.2V20.4C16.8 18.7032 16.8 17.8548 17.328 17.328C17.8536 16.8 18.702 16.8 20.4 16.8C22.098 16.8 22.9452 16.8 23.472 17.328C24 17.8548 24 18.7032 24 20.4V24H0C0 22.3032 7.15256e-08 21.4548 0.528 20.928C1.0536 20.4 1.902 20.4 3.6 20.4C5.298 20.4 6.1452 20.4 6.672 20.928C7.2 21.4536 7.2 22.302 7.2 24V13.2C7.2 11.5032 7.2 10.6548 7.728 10.128C8.2536 9.6 9.102 9.6 10.8 9.6ZM10.9752 1.2276C11.4312 0.408 11.6592 0 12 0C12.3408 0 12.5688 0.408 13.0248 1.2276L13.1424 1.4388C13.272 1.6716 13.3368 1.7868 13.4376 1.8636C13.5396 1.9404 13.6656 1.9692 13.9176 2.0256L14.1456 2.0784C15.0312 2.2788 15.474 2.3784 15.5796 2.7168C15.6852 3.0552 15.3828 3.4092 14.7792 4.1148L14.6232 4.2972C14.4516 4.4976 14.3652 4.5972 14.3268 4.722C14.2884 4.8468 14.3016 4.98 14.3268 5.2476L14.3508 5.4912C14.442 6.4332 14.4876 6.9048 14.2128 7.1136C13.9368 7.3236 13.5216 7.1316 12.6924 6.75L12.4788 6.6516C12.2424 6.5436 12.1248 6.4884 12 6.4884C11.8752 6.4884 11.7576 6.5436 11.5212 6.6516L11.3076 6.75C10.4784 7.1316 10.0632 7.3236 9.7872 7.1136C9.5112 6.9048 9.558 6.4332 9.6492 5.4912L9.6732 5.2476C9.6984 4.98 9.7116 4.8468 9.6732 4.722C9.6348 4.5972 9.5484 4.4976 9.3768 4.2972L9.2208 4.1148C8.6172 3.4092 8.3148 3.0564 8.4204 2.7168C8.526 2.3784 8.9688 2.2788 9.8544 2.0784L10.0824 2.0256C10.3344 1.9692 10.4604 1.9416 10.5624 1.8636C10.6632 1.7868 10.728 1.6716 10.8576 1.4388L10.9752 1.2276Z" fill="black"/>
-                        </svg>
-                    <a href="{{ route('peringkat') }}"></i> Peringkat</li>
-                    <li><i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M2.39998 23.1999H1.59999C1.17564 23.1999 0.76868 23.0313 0.468625 22.7313C0.168569 22.4312 0 22.0242 0 21.5999V4.80006C0 4.37572 0.168569 3.96875 0.468625 3.6687C0.76868 3.36864 1.17564 3.20007 1.59999 3.20007H2.39998C2.82432 3.20007 3.23128 3.36864 3.53134 3.6687C3.83139 3.96875 3.99996 4.37572 3.99996 4.80006V21.5999C3.99996 22.0242 3.83139 22.4312 3.53134 22.7313C3.23128 23.0313 2.82432 23.1999 2.39998 23.1999ZM11.1999 8.00003C11.1999 7.57569 11.0313 7.16872 10.7313 6.86867C10.4312 6.56861 10.0243 6.40004 9.59991 6.40004H6.39994C5.9756 6.40004 5.56864 6.56861 5.26858 6.86867C4.96853 7.16872 4.79996 7.57569 4.79996 8.00003V9.40002C4.79996 9.45306 4.82103 9.50393 4.85853 9.54144C4.89604 9.57894 4.94691 9.60002 4.99995 9.60002H10.9999C11.0529 9.60002 11.1038 9.57894 11.1413 9.54144C11.1788 9.50393 11.1999 9.45306 11.1999 9.40002V8.00003ZM4.79996 21.5999C4.79996 22.0242 4.96853 22.4312 5.26858 22.7313C5.56864 23.0313 5.9756 23.1999 6.39994 23.1999H9.59991C10.0243 23.1999 10.4312 23.0313 10.7313 22.7313C11.0313 22.4312 11.1999 22.0242 11.1999 21.5999V20.0999C11.1999 20.0734 11.1894 20.048 11.1706 20.0292C11.1519 20.0105 11.1264 19.9999 11.0999 19.9999H4.89996C4.87343 19.9999 4.848 20.0105 4.82925 20.0292C4.81049 20.048 4.79996 20.0734 4.79996 20.0999V21.5999Z" fill="black"/>
-                            <path d="M11.0997 11.2H4.8998C4.84458 11.2 4.7998 11.2447 4.7998 11.3V18.2999C4.7998 18.3551 4.84458 18.3999 4.8998 18.3999H11.0997C11.155 18.3999 11.1997 18.3551 11.1997 18.2999V11.3C11.1997 11.2447 11.155 11.2 11.0997 11.2Z" fill="black"/>
-                            <path d="M15.2 23.1998H13.6C13.1756 23.1998 12.7687 23.0313 12.4686 22.7312C12.1686 22.4312 12 22.0242 12 21.5999V2.40003C12 1.97569 12.1686 1.56873 12.4686 1.26867C12.7687 0.968618 13.1756 0.800049 13.6 0.800049H15.2C15.6243 0.800049 16.0313 0.968618 16.3313 1.26867C16.6314 1.56873 16.8 1.97569 16.8 2.40003V21.5999C16.8 22.0242 16.6314 22.4312 16.3313 22.7312C16.0313 23.0313 15.6243 23.1998 15.2 23.1998ZM23.9944 21.4724L22.3829 4.47252C22.3089 3.69002 21.5359 3.12253 20.6564 3.20703L19.0639 3.35703C18.1844 3.44052 17.5314 4.14252 17.6054 4.92501L19.2169 21.9249C19.2909 22.7073 20.0639 23.2748 20.9434 23.1903L22.5359 23.0403C23.4154 22.9568 24.0684 22.2549 23.9944 21.4724Z" fill="black"/>
-                        </svg>
-                    <a href="{{ route('library') }}"></i>Library</li>
-                </ul>
-            </nav>
-            <div class="logout">
-                <a href="#"><i class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="24" viewBox="0 0 26 24" fill="none">
-                        <path d="M15.6667 6.66671V4.00004C15.6667 3.2928 15.3857 2.61452 14.8856 2.11442C14.3855 1.61433 13.7072 1.33337 13 1.33337H3.66667C2.95942 1.33337 2.28115 1.61433 1.78105 2.11442C1.28095 2.61452 1 3.2928 1 4.00004V20C1 20.7073 1.28095 21.3856 1.78105 21.8857C2.28115 22.3858 2.95942 22.6667 3.66667 22.6667H13C13.7072 22.6667 14.3855 22.3858 14.8856 21.8857C15.3857 21.3856 15.6667 20.7073 15.6667 20V17.3334" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9 12H25M25 12L21 8M25 12L21 16" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </i> Logout</a>
-            </div>
-        </aside>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard BIMA</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <img src="assets/logo-bima.png" alt="Logo BIMA" class="logo" />
+        <nav class="menu">
+          <a href="../dashboard/dashboard.html"
+            ><img src="assets/icon-dashboard.png" alt="" /> Dashboard</a
+          >
+          <a href="../peta/peta.html" class="active"
+            ><img src="assets/icon-map.png" alt="" /> Peta</a
+          >
+          <a href="../mentoring/1/mentoring.html"
+            ><img src="assets/icon-mentoring.png" alt="" /> Mentoring</a
+          >
+          <a href="../peringkat/peringkat.html"
+            ><img src="assets/icon-peringkat.png" alt="" /> Peringkat</a
+          >
+          <a href="../library/library.html"
+            ><img src="assets/icon-library.png" alt="" /> Library</a
+          >
+        </nav>
+        <a class="logout" href="../login/1/login1.html"
+          ><img src="assets/icon-logout.png" alt="" /> Logout</a
+        >
+      </aside>
 
-        <main class="main-content">
-            <header class="header">
-                <div class="icons">
-                    <i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24" fill="none">
-                            <path d="M6.27222 21.2113C6.51226 22.0172 7.00463 22.7238 7.6762 23.2262C8.34777 23.7286 9.16272 24 10 24C10.8373 24 11.6522 23.7286 12.3238 23.2262C12.9954 22.7238 13.4877 22.0172 13.7278 21.2113H6.27222ZM0 20.0949H20V16.7457L17.7778 13.3966V7.81467C17.7778 6.78844 17.5766 5.77225 17.1857 4.82413C16.7949 3.87601 16.222 3.01452 15.4997 2.28886C14.7775 1.56321 13.9201 0.987581 12.9764 0.594857C12.0328 0.202132 11.0214 0 10 0C8.97861 0 7.96722 0.202132 7.02357 0.594857C6.07993 0.987581 5.22251 1.56321 4.50028 2.28886C3.77805 3.01452 3.20514 3.87601 2.81427 4.82413C2.4234 5.77225 2.22222 6.78844 2.22222 7.81467V13.3966L0 16.7457V20.0949Z" fill="white"/>
-                        </svg>
-                    </i>
-                    <i class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
-                            <path d="M20.4 16.1892H17.37C17.1911 16.1894 17.0146 16.2302 16.8535 16.3085C16.6925 16.3869 16.5511 16.5008 16.44 16.6418L12.93 21.0469C12.8176 21.1882 12.675 21.3024 12.5127 21.3808C12.3505 21.4593 12.1728 21.5 11.9928 21.5C11.8128 21.5 11.6351 21.4593 11.4729 21.3808C11.3106 21.3024 11.168 21.1882 11.0556 21.0469L7.5456 16.6418C7.43434 16.5007 7.29279 16.3866 7.13154 16.3083C6.97028 16.2299 6.7935 16.1892 6.6144 16.1892H3.6C1.6056 16.1892 0 14.5744 0 12.5686V4.12059C0 2.11478 1.6056 0.5 3.6 0.5H20.4C22.3956 0.5 24 2.11478 24 4.12059V12.5686C24 14.5744 22.3956 16.1892 20.4 16.1892Z" fill="white"/>
-                        </svg>
-                    </i>
-                    <img src="/images/Profile.png" class="profile-pic" alt="Foto Profil">
+      <!-- MAIN CONTENT -->
+      <main class="main">
+        <!-- HEADER -->
+        <header class="main-header">
+          <div></div>
+          <!-- Placeholder untuk posisi kiri -->
+          <div class="top-right-icons">
+            <button class="icon-button">
+              <i class="fa-solid fa-bell"></i>
+            </button>
+            <img
+              src="assets/profile-dashboard.jpg"
+              alt="Profile"
+              class="profile-image"
+            />
+          </div>
+        </header>
+
+        <!-- JUDUL -->
+        <h2 class="peta-title">Peta Level</h2>
+
+        <!-- MAP SECTION -->
+        <div class="peta-container">
+          <div class="jalur atas">
+            <div id="level-1" class="level">
+              <img
+                src="assets/smoothcorner.png"
+                alt="Bintang"
+                class="bintang"
+              />
+              <p><strong>Level 1</strong><br />Gerbang Arcana</p>
+            </div>
+            <div class="line"></div>
+            <div id="level-2" class="level">
+              <img
+                src="assets/smoothcorner.png"
+                alt="Bintang"
+                class="bintang"
+              />
+              <p><strong>Level 2</strong><br />Mencari Mentor</p>
+            </div>
+            <div class="line"></div>
+            <div id="level-3" class="level">
+              <img
+                src="assets/smoothcorner.png"
+                alt="Bintang"
+                class="bintang"
+              />
+              <p><strong>Level 3</strong><br />Ritual Judul</p>
+            </div>
+            <div class="line"></div>
+            <div id="level-4" class="level">
+              <img
+                src="assets/smoothcorner.png"
+                alt="Bintang"
+                class="bintang"
+              />
+              <p><strong>Level 4</strong><br />Awal Perjalanan</p>
+            </div>
+          </div>
+
+          <div class="line-vertical"></div>
+
+          <div class="jalur bawah">
+            <div class="level">
+              <a href="peta2.html">
+                <img
+                  src="assets/smoothcorner.png"
+                  alt="Bintang"
+                  class="bintang"
+                />
+              </a>
+              <p><strong>The End?</strong><br />Wisuda Purnacita</p>
+            </div>
+            <div class="line2"></div>
+            <div class="level">
+              <a href="peta2.html">
+                <img
+                  src="assets/smoothcorner.png"
+                  alt="Bintang"
+                  class="bintang"
+                />
+              </a>
+              <p><strong>Level 10</strong><br />Sidang Suci Arcana</p>
+            </div>
+            <div class="line2"></div>
+            <div class="level">
+              <a href="peta2.html">
+                <img
+                  src="assets/smoothcorner.png"
+                  alt="Bintang"
+                  class="bintang"
+                />
+              </a>
+              <p><strong>Level 6 - 9</strong><br />Lembah Revisi Abadi</p>
+            </div>
+            <div class="line2"></div>
+            <div class="level">
+              <a href="peta2.html">
+                <img
+                  src="assets/smoothcorner.png"
+                  alt="Bintang"
+                  class="bintang"
+                />
+              </a>
+              <p><strong>Level 5</strong><br />Duel Proposal</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- POP UP LEVEL -->
+        <!-- LEVEL 1 -->
+        <div id="popup-level1" class="popup1-container">
+          <div class="popup1-content">
+            <button class="close1-popup" onclick="closePopup('popup-level1')">
+              ✖
+            </button>
+
+            <div class="popup1-flex">
+              <div class="popup1-character">
+                <img src="assets/icon-lvl1.png" alt="Penyihir" />
+              </div>
+              <div class="popup1-info">
+                <h2>Level 1 – Gerbang Arcana</h2>
+                <p>
+                  Langkah pertamamu telah dimulai. Saat menjejakkan kaki di
+                  pelataran Akademia, sebuah gerbang kuno terbuka menyambutmu.
+                  Mendaftar skripsi adalah kunci memasuki dunia penuh misteri
+                  dan tantangan yang akan menguji segala potensimu.
+                </p>
+                <p class="quest1-label">Quest:</p>
+
+                <div class="quest1-box">
+                  <div class="quest1-left">
+                    <div class="quest1-icon">
+                      <img src="assets/quest-lvl1.png" alt="Star Icon" />
+                    </div>
+                    <div class="quest1-text">
+                      <strong>Beri nama tongkat sihirmu</strong>
+                      <p>Lengkapi data dan dokumen pengajuan skripsi.</p>
+                    </div>
+                  </div>
+                  <div id="after-popuplvl1" class="quest1-xp">+60 XP</div>
                 </div>
-            </header>
+              </div>
+            </div>
+          </div>
+        </div>
 
-            <footer class="footer-content">
-                <ul class="journey">
-                    <li class="lvl1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="122" height="122" viewBox="0 0 122 122" fill="none">
-                            <g filter="url(#filter0_d_229_2047)">
-                                <path d="M61 12L63.776 28.8533C66.2589 43.9269 78.0731 55.7411 93.1467 58.224L110 61L93.1467 63.776C78.0731 66.2589 66.2589 78.0731 63.776 93.1467L61 110L58.224 93.1467C55.7411 78.0731 43.9269 66.2589 28.8533 63.776L12 61L28.8533 58.224C43.9269 55.7411 55.7411 43.9269 58.224 28.8533L61 12Z" fill="#FFC953"/>
-                            </g>
-                            <defs>
-                                <filter id="filter0_d_229_2047" x="0" y="0" width="122" height="122" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                    <feOffset/>
-                                    <feGaussianBlur stdDeviation="6"/>
-                                    <feComposite in2="hardAlpha" operator="out"/>
-                                    <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.788235 0 0 0 0 0.32549 0 0 0 0.7 0"/>
-                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_229_2047"/>
-                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_229_2047" result="shape"/>
-                                </filter>
-                            </defs>
-                        </svg>
-                        <strong class="desc">Level 1</strong>
-                        <span class="desc">Gerbang Arcana</span>
-                    </li>
+        <div id="popup-level12" class="popup12-container" style="display: none">
+          <div class="popup12-content">
+            <button class="close12-popup" onclick="closePopup('popup-level12')">
+              ✖
+            </button>
+            <h2>Beri nama tongkat sihirmu</h2>
+            <p>
+              Setiap penyihir hebat memulai petualangannya dengan sebuah tongkat
+              sihir yang memiliki nama unik. Berikan nama untuk tongkat sihirmu
+              sebagai tanda resmi memulai perjalanan skripsimu!
+            </p>
 
-                    <li class="peta-icon">
-                        <span class="desc">Berlian Ika</span>
-                        <img src="/images/Peta_Icon.png" alt="Peta Icon">
-                    </li>
+            <label for="nama">Nama Lengkap</label>
+            <input
+              type="text"
+              id="nama"
+              placeholder="Masukkan nama lengkap anda"
+            />
 
-                    <li class="chain1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="304" height="67" viewBox="0 0 304 67" fill="none">
-                            <path d="M2 2.5C48.7466 34.4075 248.5 77 302.5 59.5" stroke="url(#paint0_linear_229_2112)" stroke-width="5" stroke-dasharray="8 8"/>
-                            <defs>
-                                <linearGradient id="paint0_linear_229_2112" x1="2" y1="12.6323" x2="319" y2="12.6323" gradientUnits="userSpaceOnUse">
-                                <stop offset="0.6" stop-color="#FFC953"/>
-                                <stop offset="0.61" stop-color="white"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </li>
+            <label for="npm">NPM</label>
+            <input type="text" id="npm" placeholder="Masukkan NPM anda" />
 
-                    <li class="lvl2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="98" height="98" viewBox="0 0 98 98" fill="none">
-                            <path d="M49.8027 17.1787C52.3841 32.8494 64.5148 45.1846 80.0781 48.0674L80.8213 48.1973L85.6934 49L80.8213 49.8027C65.1506 52.3841 52.8154 64.5148 49.9326 80.0781L49.8027 80.8213L49 85.6934L48.1973 80.8213C45.6159 65.1506 33.4852 52.8154 17.9219 49.9326L17.1787 49.8027L12.3057 49L17.1787 48.1973C32.8494 45.6159 45.1846 33.4852 48.0674 17.9219L48.1973 17.1787L49 12.3057L49.8027 17.1787Z" stroke="#FFC953" stroke-width="4"/>
-                        </svg>
-                        <strong class="desc">Level 2</strong>
-                        <span class="desc">Mencari Mentor</span>
-                    </li>
+            <label for="topik">Topik Skripsi</label>
+            <input
+              type="text"
+              id="topik"
+              placeholder="Masukkan topik skripsi anda"
+            />
 
-                    <li class="chain2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="280" height="72" viewBox="0 0 280 72" fill="none">
-                            <path d="M2.5 69.5C56.5 23.5 161 -25.5 278.5 24.5" stroke="white" stroke-opacity="0.6" stroke-width="5" stroke-dasharray="10 10"/>
-                        </svg>
-                    </li>
+            <label for="transkrip">Unggah Transkrip Nilai</label>
+            <label class="upload12-btn">
+              <input type="file" id="transkrip" />
+              <span>📤 Upload file</span>
+            </label>
 
-                    <li class="lvl3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="98" height="98" viewBox="0 0 98 98" fill="none">
-                            <path d="M49.8027 17.1787C52.3841 32.8494 64.5148 45.1846 80.0781 48.0674L80.8213 48.1973L85.6934 49L80.8213 49.8027C65.1506 52.3841 52.8154 64.5148 49.9326 80.0781L49.8027 80.8213L49 85.6934L48.1973 80.8213C45.6159 65.1506 33.4852 52.8154 17.9219 49.9326L17.1787 49.8027L12.3057 49L17.1787 48.1973C32.8494 45.6159 45.1846 33.4852 48.0674 17.9219L48.1973 17.1787L49 12.3057L49.8027 17.1787Z" stroke="#FFC953" stroke-width="4"/>
-                        </svg>
-                        <strong class="desc">Level 3</strong>
-                        <span class="desc">Ritual Judul</span>
-                    </li>
+            <button id="submit12-btn" type="submit" class="submit12-btn">
+              Kirim
+            </button>
+          </div>
+        </div>
 
-                    <li class="chain3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="330" height="36" viewBox="0 0 330 36" fill="none">
-                            <path d="M2 2.5C73 34.3472 266.5 36.5 329.5 31" stroke="white" stroke-opacity="0.6" stroke-width="5" stroke-dasharray="10 10"/>
-                        </svg>
-                    </li>
+        <div id="quest-alert" class="quest-alert">
+          <p>Quest Level 1 telah diselesaikan, <span>+60 XP</span></p>
+        </div>
+        <div id="quest-alert2" class="quest-alert2">
+          <p>Quest Level 2 Telah dibuka!</p>
+        </div>
 
-                    <li class="lvl4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="98" height="98" viewBox="0 0 98 98" fill="none">
-                            <path d="M49.8027 17.1787C52.3841 32.8494 64.5148 45.1846 80.0781 48.0674L80.8213 48.1973L85.6934 49L80.8213 49.8027C65.1506 52.3841 52.8154 64.5148 49.9326 80.0781L49.8027 80.8213L49 85.6934L48.1973 80.8213C45.6159 65.1506 33.4852 52.8154 17.9219 49.9326L17.1787 49.8027L12.3057 49L17.1787 48.1973C32.8494 45.6159 45.1846 33.4852 48.0674 17.9219L48.1973 17.1787L49 12.3057L49.8027 17.1787Z" stroke="#FFC953" stroke-width="4"/>
-                        </svg>
-                        <strong class="desc">Level 4</strong>
-                        <span class="desc">Awal Perjalanan</span>
-                    </li>
+        <!-- LEVEL 2 -->
+        <div id="popup-level2" class="popup2-container" style="display: none">
+          <div class="popup2-content">
+            <button class="close2-popup" onclick="closePopup('popup-level2')">
+              ✖
+            </button>
 
-                    <li class="chain4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="171" height="279" viewBox="0 0 171 279" fill="none">
-                            <path d="M1.5 3C243.5 66.5 169.5 244.5 100 276" stroke="white" stroke-opacity="0.6" stroke-width="5" stroke-dasharray="10 10"/>
-                        </svg>
-                    </li>
+            <div class="popup2-flex">
+              <div class="popup2-character">
+                <img src="assets/icon-lvl2.png" alt="Penyihir" />
+              </div>
+              <div class="popup2-info">
+                <h2>Level 2 – Mencari Mentor</h2>
+                <p>
+                  Di balik gerbang, berdiri Ruang Pemanggilan. Dalam ruangan
+                  ini, para Roh Pembimbing bersedia membimbing para pencari
+                  ilmu. Namun, tidak sembarang mentor akan menyambutmu. Pilihlah
+                  dengan bijak, karena dialah yang akan menuntunmu melewati
+                  badai intelektual yang akan datang.
+                </p>
+                <p class="quest2-label">Quest:</p>
 
-                    <li class="lvl5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="98" height="98" viewBox="0 0 98 98" fill="none">
-                            <path d="M49.8027 17.1787C52.3841 32.8494 64.5148 45.1846 80.0781 48.0674L80.8213 48.1973L85.6934 49L80.8213 49.8027C65.1506 52.3841 52.8154 64.5148 49.9326 80.0781L49.8027 80.8213L49 85.6934L48.1973 80.8213C45.6159 65.1506 33.4852 52.8154 17.9219 49.9326L17.1787 49.8027L12.3057 49L17.1787 48.1973C32.8494 45.6159 45.1846 33.4852 48.0674 17.9219L48.1973 17.1787L49 12.3057L49.8027 17.1787Z" stroke="#FFC953" stroke-width="4"/>
-                        </svg>
-                        <strong class="desc">Level 5</strong>
-                        <span class="desc">Duel Proposal</span>
-                    </li>
+                <div class="quest2-box">
+                  <div class="quest2-left">
+                    <div class="quest2-icon">
+                      <img src="assets/quest-lvl2.png" alt="Star Icon" />
+                    </div>
+                    <div class="quest2-text">
+                      <strong>Panggil Sang Pembimbing</strong>
+                      <p>Pilih dan ajukan dosen pembimbing mu</p>
+                    </div>
+                  </div>
+                  <div id="after-popuplvl2" class="quest2-xp">+100 XP</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-                    <li class="chain5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="318" height="95" viewBox="0 0 318 95" fill="none">
-                            <path d="M1.5 92C121 36 181.5 83 316 2.5" stroke="white" stroke-opacity="0.6" stroke-width="5" stroke-dasharray="10 10"/>
-                        </svg>
-                    </li>
+        <!-- Popup Container -->
+        <div
+          id="popup21-pembimbing"
+          class="popup21-pembimbing-container"
+          style="display: none"
+        >
+          <div class="popup21-pembimbing-content">
+            <button
+              class="close21-popup-btn"
+              onclick="closePopup('popup21-pembimbing')"
+            >
+              ✖
+            </button>
+            <h2>Panggil sang pembimbing</h2>
+            <p>
+              Tidak semua penyihir berjalan sendirian. Di hadapanmu berdiri
+              Ruang Pemanggilan, tempat para mentor terpilih bersedia membimbing
+              para murid. Pilihlah dengan bijak siapa yang akan kau panggil
+              sebagai penuntun langkahmu.
+            </p>
 
-                    <li class="lvl6-9">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="98" height="98" viewBox="0 0 98 98" fill="none">
-                            <path d="M49.8027 17.1787C52.3841 32.8494 64.5148 45.1846 80.0781 48.0674L80.8213 48.1973L85.6934 49L80.8213 49.8027C65.1506 52.3841 52.8154 64.5148 49.9326 80.0781L49.8027 80.8213L49 85.6934L48.1973 80.8213C45.6159 65.1506 33.4852 52.8154 17.9219 49.9326L17.1787 49.8027L12.3057 49L17.1787 48.1973C32.8494 45.6159 45.1846 33.4852 48.0674 17.9219L48.1973 17.1787L49 12.3057L49.8027 17.1787Z" stroke="#FFC953" stroke-width="4"/>
-                        </svg>
-                        <strong class="desc">Level 6-9</strong>
-                        <span class="desc">Lembah Revisi Abadi</span>
-                    </li>
+            <!-- Dosen Pembimbing 1 -->
+            <label for="dosen1">Pilih Dosen Pembimbing</label>
+            <select id="dosen1">
+              <option value="">--- Dosen Pembimbing ---</option>
+              <option value="dosen1">Dosen Pembimbing 1</option>
+              <option value="dosen2">Dosen Pembimbing 2</option>
+              <option value="dosen3">Dosen Pembimbing 3</option>
+            </select>
 
-                    <li class="chain6-9">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="312" height="110" viewBox="0 0 312 110" fill="none">
-                            <path d="M1 3C151.5 35.5 185.5 150 310.5 89.5" stroke="white" stroke-opacity="0.6" stroke-width="5" stroke-dasharray="10 10"/>
-                        </svg>
-                    </li>
+            <label for="alasan1">Alasan memilih dosen pembimbing 1</label>
+            <input
+              type="text"
+              id="alasan1"
+              placeholder="Berikan alasan kenapa memilih Dosen Pembimbing 1"
+            />
 
-                    <li class="lvl10">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="98" height="98" viewBox="0 0 98 98" fill="none">
-                            <path d="M49.8027 17.1787C52.3841 32.8494 64.5148 45.1846 80.0781 48.0674L80.8213 48.1973L85.6934 49L80.8213 49.8027C65.1506 52.3841 52.8154 64.5148 49.9326 80.0781L49.8027 80.8213L49 85.6934L48.1973 80.8213C45.6159 65.1506 33.4852 52.8154 17.9219 49.9326L17.1787 49.8027L12.3057 49L17.1787 48.1973C32.8494 45.6159 45.1846 33.4852 48.0674 17.9219L48.1973 17.1787L49 12.3057L49.8027 17.1787Z" stroke="#FFC953" stroke-width="4"/>
-                        </svg>
-                        <strong class="desc">Level 10</strong>
-                        <span class="desc">Sidang Suci Arcana</span>
-                    </li>
+            <!-- Dosen Pembimbing 2 -->
+            <label for="dosen2">Pilih Dosen Pembimbing</label>
+            <select id="dosen2">
+              <option value="">--- Dosen Pembimbing ---</option>
+              <option value="dosen1">Dosen Pembimbing 1</option>
+              <option value="dosen2">Dosen Pembimbing 2</option>
+              <option value="dosen3">Dosen Pembimbing 3</option>
+            </select>
 
-                    <li class="chain10">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="277" height="173" viewBox="0 0 277 173" fill="none">
-                            <path d="M3 171C52 102 73 -23.9999 276.5 7.49998" stroke="white" stroke-opacity="0.6" stroke-width="5" stroke-dasharray="10 10"/>
-                        </svg>
-                    </li>
+            <label for="alasan2">Alasan memilih dosen pembimbing 2</label>
+            <input
+              type="text"
+              id="alasan2"
+              placeholder="Berikan alasan kenapa memilih Dosen Pembimbing 2"
+            />
+            <button id="submit21-pembimbing" class="submit21-btn">Kirim</button>
+          </div>
+        </div>
 
-                    <li class="the-end">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="98" height="98" viewBox="0 0 98 98" fill="none">
-                            <path d="M49.8027 17.1787C52.3841 32.8494 64.5148 45.1846 80.0781 48.0674L80.8213 48.1973L85.6934 49L80.8213 49.8027C65.1506 52.3841 52.8154 64.5148 49.9326 80.0781L49.8027 80.8213L49 85.6934L48.1973 80.8213C45.6159 65.1506 33.4852 52.8154 17.9219 49.9326L17.1787 49.8027L12.3057 49L17.1787 48.1973C32.8494 45.6159 45.1846 33.4852 48.0674 17.9219L48.1973 17.1787L49 12.3057L49.8027 17.1787Z" stroke="#FFC953" stroke-width="4"/>
-                        </svg>
-                        <strong class="desc">The End?</strong>
-                        <span class="desc">Wisuda Purnacita</span>
-                    </li>
-                </ul>
-            </footer>
-        </main>
+        <div id="quest-alert3" class="quest-alert3">
+          <p>Quest Level 2 telah diselesaikan, <span>+100 XP</span></p>
+        </div>
+        <div id="quest-alert4" class="quest-alert4">
+          <p>Quest Level 3 Telah dibuka!</p>
+        </div>
+
+        <!-- LEVEL 3 -->
+        <div id="popup-level3" class="popup3-container">
+          <div class="popup3-content">
+            <button class="close3-popup" onclick="closePopup('popup-level3')">
+              ✖
+            </button>
+            <div class="popup3-flex">
+              <div class="popup3-character">
+                <img src="assets/icon-lvl3.png" alt="Penyihir" />
+              </div>
+              <div class="popup3-info">
+                <h2>Level 3 – Ritual Judul</h2>
+                <p>
+                  Setiap penjelajah butuh mantra utama (judul skripsi). Dalam
+                  Ritual Judul, kau akan memahat niatmu menjadi kata-kata sakti.
+                  Tapi hati-hati, judul yang lemah akan hancur dalam kobaran
+                  kritik. Bacalah literatur purba dan siapkan alasan yang kuat!
+                </p>
+                <p class="quest3-label">Quest:</p>
+
+                <div class="quest3-box">
+                  <div class="quest3-left">
+                    <div class="quest3-icon">
+                      <img src="assets/quest-lvl3.png" alt="Star Icon" />
+                    </div>
+                    <div class="quest3-text">
+                      <strong>Ajukan mantra judulmu</strong>
+                      <p>Ajukan dan validasi judul skripsi</p>
+                    </div>
+                  </div>
+                  <div id="after-popuplvl3" class="quest3-xp">+120 XP</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="popup31-judul" class="popup31-judul-container">
+          <div class="popup31-judul-content">
+            <button class="close31-popup" onclick="closePopup('popup31-judul')">
+              ✖
+            </button>
+            <div id="popup31-flex">
+              <h2>Ajukan mantra judulmu</h2>
+              <p>
+                Sebelum menempuh perjalanan besar, kau harus merapal mantra
+                utama: judul skripsi. Wujudkan ide dan niatmu dalam rangkaian
+                kata-kata sakti yang akan membimbing seluruh proses penjelajahan
+                akademikmu.
+              </p>
+              <form id="form31-judul">
+                <input
+                  type="text"
+                  id="judul-input"
+                  class="judul-input"
+                  placeholder="Tuliskan judulmu di sini"
+                  required
+                />
+                <button id="submit31-judul" class="submit31-judul-btn">
+                  Kirim
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div id="quest-alert5" class="quest-alert5">
+          <p>Quest Level 3 telah diselesaikan, <span>+120 XP</span></p>
+        </div>
+        <div id="quest-alert6" class="quest-alert6">
+          <p>Quest Level 4 Telah dibuka!</p>
+        </div>
+
+        <!-- LEVEL 4 -->
+        <div id="popup-level4" class="popup4-container">
+          <div class="popup4-content">
+            <button class="close4-popup" onclick="closePopup('popup-level4')">
+              ✖
+            </button>
+            <div class="popup4-flex">
+              <div class="popup4-character">
+                <img src="assets/icon-lvl4.png" alt="Penyihir" />
+              </div>
+              <div class="popup4-info">
+                <h2>Level 4 – Awal Perjalanan</h2>
+                <p>
+                  Perjalananmu dimulai dengan percikan tinta pertama. Di sinilah
+                  hubungan antara penyihir muda dan mentornya diuji. Dengarkan
+                  arahan, perbaiki draft awalmu, dan bangun fondasi yang kokoh
+                  sebelum badai revisi datang menerpa.
+                </p>
+                <p class="quest4-label">Quest:</p>
+
+                <div class="quest4-box">
+                  <div class="quest4-left">
+                    <div class="quest4-icon">
+                      <img src="assets/quest-lvl4.png" alt="Star Icon" />
+                    </div>
+                    <div class="quest4-text">
+                      <strong>Ajukan mantra judulmu</strong>
+                      <p>Ajukan dan validasi judul skripsi</p>
+                    </div>
+                  </div>
+                  <div id="after-popuplvl4" class="quest4-xp">+120 XP</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banyak Bimbingan -->
+        <div id="popup41-container" class="popup41-bimbingan-container">
+          <div class="popup41-content">
+            <button
+              class="close41-popup-btn"
+              onclick="closePopup('popup41-container')"
+            >
+              ✖
+            </button>
+            <h2>Hadiri tiga pertemuan awal</h2>
+            <p>
+              Tinta pertama telah disiapkan, dan kertas awal terbentang. Inilah
+              momen di mana penyihir muda dan pembimbingnya membentuk ikatan.
+              Awali pertemuan, dengarkan wejangan, dan siapkan rancangan pertama
+              petualanganmu.
+            </p>
+
+            <button id="progress41-box" class="progress-box" type="button">
+              <div class="progress-icon">
+                <img src="assets/quest-lvl4.png" alt="Star Icon" />
+              </div>
+              <div class="progress-text">Lakukan 3 bimbingan awal</div>
+              <div class="progress-count">0/3 Bimbingan</div>
+            </button>
+          </div>
+        </div>
+
+        <div id="quest-alert7" class="quest-alert7">
+          <p>Quest Level 4 telah diselesaikan, <span>+120 XP</span></p>
+        </div>
+        <div id="quest-alert8" class="quest-alert8">
+          <p>Quest Level 5 Telah dibuka!</p>
+        </div>
+      </main>
     </div>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

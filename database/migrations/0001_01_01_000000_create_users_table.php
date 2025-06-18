@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('profile_photo')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->integer('level')->default(1);
+            $table->integer('xp')->default(0);
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
