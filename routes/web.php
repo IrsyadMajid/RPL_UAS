@@ -7,14 +7,17 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
-Route::get('/dashboard', function () {
-    return redirect('/homepage');
-})->middleware('auth');
+Route::get('/homepage', function () {
+    return view('homepage');
+})->middleware(['auth', 'user']);
+
+Route::get('/adminpage', function () {
+    return view('adminpage');
+})->middleware(['auth', 'admin']);
 
 Route::get('/homepage', function () {
     return view('homepage');
 })->name('homepage');
-
 
 Route::get('/peta', function () {
     return view('peta');
