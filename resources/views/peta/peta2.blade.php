@@ -168,7 +168,7 @@
                         <p>Ajukan dan validasi judul skripsi</p>
                         </div>
                     </div>
-                    <div id="after-popuplvl5" class="quest5-xp">+200 XP</div>
+                    <div id="after-popuplvl5" class="quest5-xp">+10 XP</div>
                     </div>
                 </div>
                 </div>
@@ -244,7 +244,7 @@
             </div>
 
             <div id="quest-alert9" class="quest-alert9">
-            <p>Quest Level 5 telah diselesaikan, <span>+200 XP</span></p>
+            <p>Quest Level 5 telah diselesaikan, <span>+10 XP</span></p>
             </div>
             <div id="quest-alert10" class="quest-alert10">
             <p>Quest Level 6 Telah dibuka!</p>
@@ -285,7 +285,7 @@
                         <p>Lakukan sesi bimbingan lanjutan minimal 6x.</p>
                         </div>
                     </div>
-                    <div id="after-popuplvl69" class="quest69-xp">+2000 XP</div>
+                    <div id="after-popuplvl69" class="quest69-xp">+40 XP</div>
                     </div>
                 </div>
                 </div>
@@ -324,7 +324,7 @@
             </div>
 
             <div id="quest-alert691" class="quest-alert691">
-            <p>Quest Level 6-9 telah diselesaikan, <span>+200 XP</span></p>
+            <p>Quest Level 6-9 telah diselesaikan, <span>+40 XP</span></p>
             </div>
             <div id="quest-alert692" class="quest-alert692">
             <p>Quest Level 10 Telah dibuka!</p>
@@ -360,7 +360,7 @@
                         <p>Lakukan sidang skripsi.</p>
                         </div>
                     </div>
-                    <div id="after-popuplvl10" class="quest10-xp">+3000 XP</div>
+                    <div id="after-popuplvl10" class="quest10-xp">+10 XP</div>
                     </div>
                 </div>
                 </div>
@@ -441,7 +441,7 @@
             </p>
             </div>
             <div id="quest-alert102" class="quest-alert102">
-            <p>Quest Level 10 telah diselesaikan, <span>+200 XP</span></p>
+            <p>Quest Level 10 telah diselesaikan, <span>+10 XP</span></p>
             </div>
             <div id="quest-alert103" class="quest-alert103">
             <p>Quest Ending Telah dibuka!</p>

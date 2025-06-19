@@ -28,7 +28,7 @@
         }
 
         setTimeout(() => {
-            updateSessionStep('login3');
+            updateSessionStep('halaman1');
             window.location.href = nextRoute;
         }, delayInMilliseconds);
     </script>

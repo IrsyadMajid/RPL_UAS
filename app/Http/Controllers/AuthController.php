@@ -39,6 +39,17 @@ class AuthController extends Controller
         ]);
     }
 
+    public function updateLoginStep(Request $request)
+    {
+        $request->validate([
+            'next_step' => 'required|string',
+        ]);
+
+        $request->session()->put('login_step', $request->next_step);
+
+        return response()->json(['status' => 'success', 'step' => $request->next_step]);
+    }
+
     public function showLogin2Form()
     {
         if (Session::get('login_step') !== 'login2' && !Auth::check()) {
