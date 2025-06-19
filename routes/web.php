@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MentoringController;
+use App\Http\Controllers\PeringkatController;
+use App\Http\Controllers\LibraryController;
 
 Route::middleware('web')->group(function () {
 
@@ -56,8 +58,8 @@ Route::middleware('web')->group(function () {
             })->name('mentoring');
         });
 
-        Route::get('/peringkat', function () { return view('peringkat'); })->name('peringkat');
-        Route::get('/library', function () { return view('library'); })->name('library');
+        Route::get('/peringkat', [PeringkatController::class, 'index'])->name('peringkat');
+        Route::get('/library', [LibraryController::class, 'index'])->name('library');
 
         Route::get('/adminpage', function () { return view('adminpage'); })->middleware('admin');
     });

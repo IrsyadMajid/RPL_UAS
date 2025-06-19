@@ -14,7 +14,7 @@
                 <img src="{{ asset('images/Profile/logo-bima.png') }}" alt="Logo BIMA" class="logo" />
                 <nav class="menu">
                     <a href="{{ route('homepage') }}" class="active"><img src="{{ asset('images/Dashboard/icon-dashboard.png') }}" alt="Icon Dashboard" /> Dashboard</a>
-                    <a href="{{ route('peta') }}"><img src="{{ asset('images/Dashboard/icon-peta.png') }}" alt="Icon Peta" /> Peta</a>
+                    <a href="{{ route('peta.peta1') }}"><img src="{{ asset('images/Dashboard/icon-peta.png') }}" alt="Icon Peta" /> Peta</a>
                     <a href="{{ route('mentoring') }}"><img src="{{ asset('images/Dashboard/icon-mentoring.png') }}" alt="Icon Mentoring" /> Mentoring</a>
                     <a href="{{ route('peringkat') }}"><img src="{{ asset('images/Dashboard/icon-peringkat.png') }}" alt="Icon Peringkat" /> Peringkat</a>
                     <a href="{{ route('library') }}"><img src="{{ asset('images/Dashboard/icon-library.png') }}" alt="Icon Library" /> Library</a>
