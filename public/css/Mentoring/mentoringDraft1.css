@@ -1,0 +1,250 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 40px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu a,
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.menu a.active {
+  background-color: #c7a8f3;
+  color: white;
+}
+
+.menu a img,
+.logout img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.logout {
+  margin-top: auto;
+  cursor: pointer;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  background-image: url('/images/Mentoring/background-mentoring.png');
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  width: 100%;
+  height: 10%;
+  background-color: #ffffff;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+
+.top-right-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-button {
+  background-color: #7c4dff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.profile-image {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px 60px;
+  flex-wrap: wrap;
+}
+
+.mentoring-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 620px;
+  color: #fff;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-title h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.empty-text {
+  font-style: italic;
+  color: #e0e0e0;
+}
+
+.mentoring-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mentoring-item {
+  background-color: white;
+  color: #333;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mentoring-title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.mentoring-time {
+  font-size: 12px;
+  color: #777;
+}
+
+.upload-button {
+  background-color: #7c4dff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.upload-button:hover {
+  background-color: #6a3ee6;
+}
+
+.claimed-tag {
+  background-color: #f0aa3c;
+  color: white;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.mentoring-submit {
+  display: block;
+  margin: 40px auto 60px auto;
+  background-color: #7b61ff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+}
+
+.maskot-wrapper {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  width: 250px;
+}
+
+.maskot {
+  width: 100%;
+  height: auto;
+}
+
+.chat-bubble {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 12px 16px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  color: #333;
+  opacity: 1;
+  max-width: 240px;
+  text-align: center;
+  z-index: 10;
+}
+
+.icon-wrapper.purple {
+  background-color: #5d2eff;
+}
+
+.claimed-tag {
+  background-color: #f0aa3c;
+  color: white;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}

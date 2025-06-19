@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 40px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu a,
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #333;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.menu a.active {
+  background-color: #c7a8f3;
+  color: white;
+}
+
+.menu a img,
+.logout img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.logout {
+  margin-top: auto;
+  cursor: pointer;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  background-image: url('/images/Mentoring/background-mentoring.png');
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  width: 100%;
+  height: 10%;
+  background-color: #ffffff;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.top-right-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-button {
+  background-color: #7c4dff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.profile-image {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+.back-button {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+}
+
+.page-title {
+  color: #333;
+  font-size: 22px;
+  text-align: center;
+  flex: 1;
+  font-weight: bold;
+}
+
+.mentoring-form-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  padding: 40px 32px;
+  border-radius: 20px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+}
+
+.mentoring-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mentoring-form label {
+  grid-column: span 2;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.mentoring-form input,
+.mentoring-form select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+}
+
+.file-drop {
+  width: 100%;
+  height: 180px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.upload-button {
+  background-color: #f0aa3c;
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.submit-button {
+  background-color: #7c4dff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: fit-content;
+  align-self: flex-end;
+  margin-top: 24px;
+}
+
+.page-header {
+  position: relative;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.back-button {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+}
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.back-button img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
