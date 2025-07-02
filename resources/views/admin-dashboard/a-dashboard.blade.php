@@ -29,8 +29,7 @@
             </header>
 
             <section class="dashboard-content">
-                <h2>Selamat Datang, {{ $admin->name }}</h2>
-
+                <h2>Selamat Datang</h2>
                 <div class="summary-cards">
                     <div class="card purple">
                         <div class="card-info">

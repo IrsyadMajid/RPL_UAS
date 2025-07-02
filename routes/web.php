@@ -30,6 +30,9 @@ Route::middleware('web')->group(function () {
             Route::get('/a-dashboard', [AdminDashboardController::class, 'index'])->name('a-dashboard');
             Route::get('/a-mahasiswa', [AdminMahasiswaController::class, 'index'])->name('a-mahasiswa');
             Route::get('/a-bimbingan', [AdminBimbinganController::class, 'index'])->name('a-bimbingan');
+
+            Route::patch('/bimbingan/{id}/approve', [AdminBimbinganController::class, 'approve'])->name('bimbingan.approve');
+            Route::patch('/bimbingan/{id}/reject', [AdminBimbinganController::class, 'reject'])->name('bimbingan.reject');
         });
     });
 
@@ -60,16 +63,16 @@ Route::middleware('web')->group(function () {
         Route::get('/peta1', function () { return view('peta.peta1'); })->name('peta.peta1');
         Route::get('/peta2', function () { return view('peta.peta2'); })->name('peta.peta2');
 
-        Route::prefix('mentoring')->group(function () {
-            Route::get('/1', [MentoringController::class, 'mentoring1'])->name('mentoring.1');
-            Route::get('/2', [MentoringController::class, 'mentoring2'])->name('mentoring.2');
-            Route::get('/C', [MentoringController::class, 'mentoringC'])->name('mentoring.C');
-            Route::get('/D', [MentoringController::class, 'mentoringD'])->name('mentoring.D');
-            Route::get('/draft', [MentoringController::class, 'mentoringDraft'])->name('mentoring.draft');
-            Route::get('/draft1', [MentoringController::class, 'mentoringDraft1'])->name('mentoring.draft1');
-            Route::get('/', function () {
-                return redirect()->route('mentoring.1');
-            })->name('mentoring');
+        Route::prefix('mentoring')->name('mentoring.')->group(function () {
+            Route::get('/', [MentoringController::class, 'mentoring1'])->name('index');
+            Route::get('/list', [MentoringController::class, 'mentoring1'])->name('1');
+            Route::get('/pilih-jenis', [MentoringController::class, 'mentoring2'])->name('2');
+            Route::get('/ajukan-meet', [MentoringController::class, 'mentoringC'])->name('C');
+            Route::get('/ajukan-draft', [MentoringController::class, 'mentoringDraft'])->name('draft');
+            Route::post('/store', [MentoringController::class, 'store'])->name('store');
+            Route::get('/detail/{id}', [MentoringController::class, 'mentoringD'])->name('D');
+            Route::get('/draft-detail/{id}', [MentoringController::class, 'mentoringDraft1'])->name('draft1');
+            Route::delete('/delete/{id}', [MentoringController::class, 'destroy'])->name('destroy');
         });
 
         Route::get('/peringkat', [PeringkatController::class, 'index'])->name('peringkat');

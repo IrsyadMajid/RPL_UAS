@@ -18,7 +18,7 @@
             <a href="{{ route('peta.peta1') }}"
                 ><img src="{{ asset('images/Peringkat/icon-peta.png') }}" alt="Icon Peta" /> Peta</a
             >
-            <a href="{{ route('mentoring') }}"
+            <a href="{{ route('mentoring.index') }}"
                 ><img src="{{ asset('images/Peringkat/icon-bimbingan.png') }}" alt="Icon Mentoring" /> Mentoring</a
             >
             <a href="{{ route('peringkat') }}" class="active"

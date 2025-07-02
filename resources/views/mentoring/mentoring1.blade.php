@@ -18,7 +18,7 @@
             <a href="{{ route('peta.peta1') }}"
                 ><img src="{{ asset('images/Mentoring/icon-map.png') }}" alt="Icon Peta" /> Peta</a
             >
-            <a href="{{ route('mentoring') }}" class="active"
+            <a href="{{ route('mentoring.index') }}" class="active"
                 ><img src="{{ asset('images/Mentoring/icon-bimbingan.png') }}" alt="Icon Mentoring" /> Mentoring</a
             >
             <a href="{{ route('peringkat') }}"
@@ -35,62 +35,61 @@
 
         <main class="main">
             <header>
-            <div></div>
-            <div class="top-right-icons">
-                <button class="icon-button">
-                <i class="fa-solid fa-bell"></i>
-                </button>
-                <img
-                src="{{ asset('images/Mentoring/profile-dashboard.jpg') }}"
-                alt="Profile"
-                class="profile-image"
-                />
-            </div>
+                <div class="top-right-icons">
+                    <button class="icon-button">
+                    <i class="fa-solid fa-bell"></i>
+                    </button>
+                    <img
+                    src="{{ asset('images/Mentoring/profile-dashboard.jpg') }}"
+                    alt="Profile"
+                    class="profile-image"/>
+                </div>
             </header>
 
-            <div class="wrapper">
-            <div class="mentoring-card">
-                <div class="section-title">
-                <h3>Yang akan datang</h3>
-                <p class="empty-text">Tidak Ada</p>
+            @if (session('success'))
+                <div class="alert alert-success" style="padding: 15px; background-color: #d4edda; color: #155724; border-radius: 8px; margin-bottom: 20px;">
+                    {{ session('success') }}
                 </div>
+            @endif
 
-                <div class="section-title">
-                <h3>Riwayat Bimbingan</h3>
-                <div class="mentoring-list">
+            <div class="wrapper">
+                <div class="mentoring-card">
+                    <div class="section-title">
+                        <h3>Yang akan datang</h3>
+                    </div>
+                    @forelse($upcoming as $item)
                     <div class="mentoring-item">
-                    <div>
-                        <p class="mentoring-title">Draft BAB II</p>
-                        <p class="mentoring-time">
-                        12 Mei 2025 - 14:00 (Online Meet)
-                        </p>
+                        <div>
+                            <p class="mentoring-title">{{ $item->topic }}</p>
+                            <p class="mentoring-time">{{ \Carbon\Carbon::parse($item->proposed_date)->format('d M Y, H:i') }} - ({{ $item->jenis_bimbingan }})</p>
+                        </div>
+                        <a href="{{ route('mentoring.D', ['id' => $item->id]) }}" class="claimed-tag" style="background-color: #28a745;">Disetujui</a>
                     </div>
-                    <button id="unggah" class="upload-button">
-                        Unggah Bukti
-                    </button>
-                    </div>
-                    <div class="mentoring-item">
-                    <div>
-                        <p class="mentoring-title">Draft BAB II</p>
-                        <p class="mentoring-time">10 Mei 2025 - (Online)</p>
-                    </div>
-                    <span id="bab3" class="claimed-tag">Terklaim</span>
-                    </div>
-                    <div class="mentoring-item">
-                    <div>
-                        <p class="mentoring-title">Draft BAB I</p>
-                        <p class="mentoring-time">5 Mei 2025 - (Online)</p>
-                    </div>
-                    <span id="bab3" class="claimed-tag">Terklaim</span>
-                    </div>
-                    <div class="mentoring-item">
-                    <div>
-                        <p class="mentoring-title">Draft BAB I</p>
-                        <p class="mentoring-time">1 Mei 2025 - 07:00 (Offline)</p>
-                    </div>
-                    <span id="bab1" class="claimed-tag">Terklaim</span>
-                    </div>
+                    @empty
+                    <p class="empty-text">Tidak ada jadwal yang akan datang.</p>
+                    @endforelse
+
+                <div class="section-title" style="margin-top: 30px;">
+                    <h3>Riwayat Bimbingan</h3>
                 </div>
+                <div class="mentoring-list">
+                    @forelse($history as $item)
+                    <div class="mentoring-item">
+                        <div>
+                            <p class="mentoring-title">{{ $item->topic }}</p>
+                            <p class="mentoring-time">{{ \Carbon\Carbon::parse($item->proposed_date)->format('d M Y, H:i') }} - ({{ $item->jenis_bimbingan }})</p>
+                        </div>
+                        @if($item->status == 'Menunggu')
+                                <a href="{{ route('mentoring.D', ['id' => $item->id]) }}" class="claimed-tag" style="background-color: #ffc107; color: #212529;">{{ $item->status }}</a>
+                            @elseif($item->status == 'Ditolak')
+                                <a href="{{ route('mentoring.D', ['id' => $item->id]) }}" class="claimed-tag" style="background-color: #dc3545;">{{ $item->status }}</a>
+                            @else
+                                <span class="claimed-tag">{{ $item->status }}</span>
+                            @endif
+                    </div>
+                    @empty
+                    <p class="empty-text">Tidak ada riwayat bimbingan.</p>
+                    @endforelse
                 </div>
             </div>
 
@@ -102,8 +101,6 @@
                 jangan lengah!
                 </div>
             </div>
-            </div>
-
             <button class="mentoring-submit">Ajukan Jadwal Mentoring</button>
         </main>
     </div>

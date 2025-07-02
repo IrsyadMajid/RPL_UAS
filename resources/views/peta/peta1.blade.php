@@ -18,7 +18,7 @@
             <a href="{{ route('peta.peta1') }}" class="active"
                 ><img src="{{ asset('images/Peta/icon-peta.png') }}" alt="Icon Peta" /> Peta</a
             >
-            <a href="{{ route('mentoring') }}"
+            <a href="{{ route('mentoring.index') }}"
                 ><img src="{{ asset('images/Peta/icon-mentoring.png') }}" alt="Icon Mentoring" /> Mentoring</a
             >
             <a href="{{ route('peringkat') }}"
@@ -464,5 +464,296 @@
         </main>
     </div>
     <script src="{{ asset('js/Peta/peta1.js') }}"></script>
+    <script>
+        let userData = {
+            nama: '',
+            npm: '',
+            topik: '',
+            transkrip: ''
+        };
+
+        function showPopup(popupId) {
+            document.getElementById(popupId).style.display = 'flex';
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+        }
+
+        function saveData() {
+            const nama = document.getElementById('nama').value;
+            const npm = document.getElementById('npm').value;
+            const topik = document.getElementById('topik').value;
+            const transkripFile = document.getElementById('transkrip').files[0];
+
+            if (!nama || !npm || !topik) {
+                alert('⚠️ Mohon lengkapi semua field yang wajib diisi!');
+                return false;
+            }
+
+            userData.nama = nama;
+            userData.npm = npm;
+            userData.topik = topik;
+            userData.transkrip = transkripFile ? transkripFile.name : 'Belum diunggah';
+
+            updateDataDisplay();
+
+            alert('✅ Data berhasil disimpan! Tongkat sihir telah diberi nama: "' + nama + '"');
+
+            return true;
+        }
+
+        function updateDataDisplay() {
+            document.getElementById('displayNama').textContent = userData.nama || '-';
+            document.getElementById('displayNpm').textContent = userData.npm || '-';
+            document.getElementById('displayTopik').textContent = userData.topik || '-';
+            document.getElementById('displayTranskrip').textContent = userData.transkrip || '-';
+
+            if (userData.nama || userData.npm || userData.topik) {
+                document.getElementById('dataDisplay').style.display = 'block';
+            }
+        }
+
+        function clearData() {
+            if (confirm('🗑️ Apakah Anda yakin ingin menghapus semua data?')) {
+                userData = {
+                    nama: '',
+                    npm: '',
+                    topik: '',
+                    transkrip: ''
+                };
+
+                document.getElementById('questForm').reset();
+
+                updateDataDisplay();
+                document.getElementById('dataDisplay').style.display = 'none';
+
+                alert('✅ Data berhasil dihapus!');
+            }
+        }
+
+        document.getElementById('questForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (saveData()) {
+                closePopup('popup-level12');
+            }
+        });
+
+        document.getElementById('transkrip').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name;
+            const uploadBtn = document.querySelector('.upload12-btn span');
+
+            if (fileName) {
+                uploadBtn.textContent = `📄 ${fileName}`;
+                uploadBtn.style.color = '#48bb78';
+            } else {
+                uploadBtn.textContent = '📤 Upload file';
+                uploadBtn.style.color = 'white';
+            }
+        });
+
+        window.addEventListener('load', function() {
+            updateDataDisplay();
+        });
+
+        function getUserData() {
+            return userData;
+        }
+
+        function setUserData(newData) {
+            userData = { ...userData, ...newData };
+            updateDataDisplay();
+        }
+
+        let level2Data = {
+            dosen1: '',
+            alasan1: '',
+            dosen2: '',
+            alasan2: ''
+        };
+
+        function showPopup(popupId) {
+            document.getElementById(popupId).style.display = 'block';
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+        }
+
+        function saveLevel2Data() {
+            const dosen1 = document.getElementById('dosen1').value;
+            const alasan1 = document.getElementById('alasan1').value;
+            const dosen2 = document.getElementById('dosen2').value;
+            const alasan2 = document.getElementById('alasan2').value;
+
+            if (!dosen1 || !alasan1 || !dosen2 || !alasan2) {
+                alert('⚠️ Mohon lengkapi semua field!');
+                return false;
+            }
+
+            if (dosen1 === dosen2) {
+                alert('⚠️ Tidak boleh memilih dosen pembimbing yang sama!');
+                return false;
+            }
+
+            level2Data.dosen1 = dosen1;
+            level2Data.alasan1 = alasan1;
+            level2Data.dosen2 = dosen2;
+            level2Data.alasan2 = alasan2;
+
+            updateLevel2DataDisplay();
+
+            alert('✅ Data pembimbing berhasil disimpan!\n\n' +
+                  '🎓 Dosen Pembimbing 1: ' + dosen1 + '\n' +
+                  '🎓 Dosen Pembimbing 2: ' + dosen2);
+
+            return true;
+        }
+
+        function updateLevel2DataDisplay() {
+            document.getElementById('displayDosen1').textContent = level2Data.dosen1 || '-';
+            document.getElementById('displayAlasan1').textContent = level2Data.alasan1 || '-';
+            document.getElementById('displayDosen2').textContent = level2Data.dosen2 || '-';
+            document.getElementById('displayAlasan2').textContent = level2Data.alasan2 || '-';
+        }
+
+        function showStoredData() {
+            if (level2Data.dosen1 || level2Data.dosen2) {
+                document.getElementById('dataDisplay').style.display = 'block';
+                updateLevel2DataDisplay();
+            } else {
+                alert('📋 Belum ada data yang tersimpan');
+            }
+        }
+
+        function clearLevel2Data() {
+            if (confirm('🗑️ Apakah Anda yakin ingin menghapus data Level 2?')) {
+                level2Data = {
+                    dosen1: '',
+                    alasan1: '',
+                    dosen2: '',
+                    alasan2: ''
+                };
+
+                document.getElementById('pembimbingForm').reset();
+
+                updateLevel2DataDisplay();
+                document.getElementById('dataDisplay').style.display = 'none';
+
+                alert('✅ Data Level 2 berhasil dihapus!');
+            }
+        }
+
+        document.getElementById('pembimbingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (saveLevel2Data()) {
+                closePopup('popup21-pembimbing');
+                showStoredData();
+            }
+        });
+
+        function getLevel2Data() {
+            return level2Data;
+        }
+
+        function setLevel2Data(newData) {
+            level2Data = { ...level2Data, ...newData };
+            updateLevel2DataDisplay();
+        }
+
+        window.addEventListener('load', function() {
+            updateLevel2DataDisplay();
+        });
+
+        document.getElementById('dosen1').addEventListener('change', function() {
+            const dosen1Value = this.value;
+            const dosen2Select = document.getElementById('dosen2');
+
+            if (dosen2Select.value === dosen1Value && dosen1Value !== '') {
+                dosen2Select.value = '';
+                alert('⚠️ Silakan pilih dosen pembimbing 2 yang berbeda');
+            }
+        });
+
+        document.getElementById('dosen2').addEventListener('change', function() {
+            const dosen2Value = this.value;
+            const dosen1Select = document.getElementById('dosen1');
+
+            if (dosen1Select.value === dosen2Value && dosen2Value !== '') {
+                this.value = '';
+                alert('⚠️ Tidak boleh memilih dosen pembimbing yang sama!');
+            }
+        });
+
+        function getAllData() {
+            return {
+                level1: window.userData || {},
+                level2: level2Data
+            };
+        }
+
+        let level3Data = {
+            judul: ''
+        };
+
+        function showPopup(popupId) {
+            document.getElementById(popupId).style.display = 'flex';
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+        }
+
+        function saveJudul() {
+            const judul = document.getElementById('judul-input').value.trim();
+
+            if (!judul) {
+                alert('⚠️ Mantra judul tidak boleh kosong!');
+                return false;
+            }
+
+            level3Data.judul = judul;
+
+            alert('✅ Judul berhasil diajukan! Mantra-mu: "' + judul + '"');
+
+            document.getElementById('form31-judul').reset();
+
+            updateJudulDisplay();
+
+            return true;
+        }
+
+        function updateJudulDisplay() {
+            const display = document.getElementById('displayJudul');
+
+            if (display) {
+                display.textContent = level3Data.judul || '-';
+                display.style.display = level3Data.judul ? 'block' : 'none';
+            }
+        }
+
+        document.getElementById('form31-judul').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (saveJudul()) {
+                closePopup('popup31-judul');
+            }
+        });
+
+        window.addEventListener('load', function() {
+            updateJudulDisplay();
+        });
+
+        function getJudulData() {
+            return level3Data;
+        }
+
+        function setJudulData(newJudul) {
+            level3Data.judul = newJudul;
+            updateJudulDisplay();
+        }
+    </script>
   </body>
 </html>

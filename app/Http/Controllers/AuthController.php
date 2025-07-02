@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         if (Auth::guard('admin')->attempt($credentials)) {
                 $request->session()->regenerate();
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.a-dashboard');
             }
 
         if (Auth::guard('web')->attempt($credentials)) {

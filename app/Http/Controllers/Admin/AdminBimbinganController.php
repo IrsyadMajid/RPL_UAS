@@ -4,26 +4,39 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Mentoring;
 use Illuminate\Support\Facades\Auth;
 
 class AdminBimbinganController extends Controller
 {
+    /**
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
-        $admin = Auth::guard('admin')->user();
-        $bimbingan = [
-            [
-                'npm' => '2308100306',
-                'nama' => 'Berlian Ika Isabela',
-                'jenis_bimbingan' => 'Skripsi',
-                'tanggal' => '2025-07-02',
-                'status' => 'Pending'
-            ],
-        ];
+        $requests = Mentoring::with('user')->latest()->paginate(15);
+        return view('admin-bimbingan.a-bimbingan', compact('requests'));
+    }
 
-        return view('admin-bimbingan.a-bimbingan', [
-            'admin' => $admin,
-            'bimbingan' => $bimbingan
-        ]);
+    /**
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function approve($id)
+    {
+        $mentoring = Mentoring::findOrFail($id);
+        $mentoring->update(['status' => 'Diterima']);
+        return back()->with('success', 'Permintaan bimbingan telah disetujui.');
+    }
+
+    /**
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function reject($id)
+    {
+        $mentoring = Mentoring::findOrFail($id);
+        $mentoring->update(['status' => 'Ditolak']);
+        return back()->with('success', 'Permintaan bimbingan telah ditolak.');
     }
 }
