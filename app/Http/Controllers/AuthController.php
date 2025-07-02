@@ -17,26 +17,28 @@ class AuthController extends Controller
     }
 
     public function login(Request $request)
-        {
+    {
         $credentials = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
 
         if (Auth::guard('admin')->attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/admin/dashboard');//Lokasi Admin
-        }
+                $request->session()->regenerate();
+                return redirect()->route('admin.dashboard');
+            }
 
         if (Auth::guard('web')->attempt($credentials)) {
-            $request->session()->regenerate();
-            Session::put('login_step', 'login2');
-            return redirect()->route('login2');
-        }
+                $request->session()->regenerate();
+                Session::put('login_step', 'login2');
+                return redirect()->route('login2');
+            }
+
+        sleep(2);
 
         return back()->withErrors([
             'email' => 'Email atau password salah',
-        ]);
+        ])->onlyInput('email');
     }
 
     public function updateLoginStep(Request $request)

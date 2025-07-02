@@ -12,12 +12,11 @@
         <aside class="sidebar">
         <img src="{{ asset('images/Dosen_Dashboard/logo-bima.png') }}" alt="Logo BIMA" class="logo" />
         <nav class="menu">
-            <a href="../dosen-dashboard/dashboard-dosen.html" class="active"><img src="{{ asset('images/Dosen_Dashboard/icon-dashboard.png') }}" alt="" /> Dashboard
-            </a>
-            <a href="../dosen-mahasiswa copy/mahasiswa-dosen1.html"><img src="{{ asset('images/Dosen_Dashboard/icon-mahasiswa.png') }}" alt="" /> Mahasiswa</a>
-            <a href="../dosen-bimbingan/bimbingan-dosen.html"><img src="{{ asset('images/Dosen_Dashboard/icon-bimbingan.png') }}" alt="" /> Bimbingan</a>
+            <a href="{{ route('admin.a-dashboard') }}" class="active"><img src="{{ asset('images/Dosen_Dashboard/icon-dashboard.png') }}" alt="" /> Dashboard</a>
+            <a href="{{ route('admin.a-mahasiswa') }}"><img src="{{ asset('images/Dosen_Dashboard/icon-mahasiswa.png') }}" alt="" /> Mahasiswa</a>
+            <a href="{{ route('admin.a-bimbingan') }}"><img src="{{ asset('images/Dosen_Dashboard/icon-bimbingan.png') }}" alt="" /> Bimbingan</a>
         </nav>
-        <a class="logout" href="../login/1/login1.html"><img src="{{ asset('images/Dosen_Dashboard/icon-logout.png') }}" alt="" /> Logout</a>
+        <a class="logout" href="{{ route('login') }}"><img src="{{ asset('images/Dosen_Dashboard/icon-logout.png') }}" alt="" /> Logout</a>
         </aside>
 
         <main class="main">
@@ -30,13 +29,13 @@
             </header>
 
             <section class="dashboard-content">
-                <h2>Selamat Datang, Pratama Wirya Atmaja, S.Kom., M.Kom!</h2>
+                <h2>Selamat Datang, {{ $admin->name }}</h2>
 
                 <div class="summary-cards">
                     <div class="card purple">
                         <div class="card-info">
                         <h3>Total Mahasiswa Bimbingan</h3>
-                        <p>23</p>
+                        <p>{{ $stats['total_students'] }}</p>
                         </div>
                         <img src="{{ asset('images/Dosen_Dashboard/icon-totalmahasiswa.png') }}" alt="icon" class="card-img-icon" />
                     </div>
@@ -44,7 +43,7 @@
                     <div class="card purple">
                         <div class="card-info">
                         <h3>Proses Bimbingan</h3>
-                        <p>20</p>
+                        <p>{{ $stats['ongoing_guidances'] }}</p>
                         </div>
                         <img src="{{ asset('images/Dosen_Dashboard/icon-prosesbimbingan.png') }}" alt="icon" class="card-img-icon" />
                     </div>
@@ -52,7 +51,7 @@
                     <div class="card purple">
                         <div class="card-info">
                         <h3>Sudah Sidang</h3>
-                        <p>3</p>
+                        <p>{{ $stats['completed_defenses'] }}</p>
                         </div>
                         <img src="{{ asset('images/Dosen_Dashboard/icon-sudahsidang.png') }}" alt="icon" class="card-img-icon" />
                     </div>
@@ -81,10 +80,10 @@
                     </div>
 
                     <div class="kanan">
-                        <div class="status-box">Judul Belum Disetujui<br /><strong>12</strong></div>
-                        <div class="status-box">Bimbingan Belum Disetujui<br /><strong>12</strong></div>
-                        <div class="status-box">Sempro Belum Disetujui<br /><strong>12</strong></div>
-                        <div class="status-box">Semhas Belum Disetujui<br /><strong>12</strong></div>
+                        <div class="status-box">Judul Belum Disetujui<br /><strong>{{ $stats['pending_titles'] }}</strong></div>
+                        <div class="status-box">Bimbingan Belum Disetujui<br /><strong>{{ $stats['pending_guidance'] }}</strong></div>
+                        <div class="status-box">Sempro Belum Disetujui<br /><strong>{{ $stats['pending_sempro'] }}</strong></div>
+                        <div class="status-box">Semhas Belum Disetujui<br /><strong>{{ $stats['pending_semhas'] }}</strong></div>
                     </div>
                 </div>
 
@@ -100,39 +99,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ( $upcoming_guidances as $guidances )
                         <tr>
-                            <td>2308100306</td>
-                            <td>Berlian Ika Isabela</td>
-                            <td>ACC Bimbingan</td>
-                            <td>1 Juni 2025</td>
+                            <td>{{ $guidances['npm'] }}</td>
+                            <td>{{ $guidances['name'] }}</td>
+                            <td>{{ $guidances['request_type'] }}</td>
+                            <td>{{ $guidances['date'] }}</td>
                             <td>
                                 <span class="icon-check">✔️</span>
                                 <span class="icon-cross">❌</span>
                                 <a href="#">Lihat Detail</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2308100601</td>
-                            <td>Lucky Fitrianda Wahyudi</td>
-                            <td>ACC Judul</td>
-                            <td>1 Juni 2025</td>
-                            <td>
-                                <span class="icon-check">✔️</span>
-                                <span class="icon-cross">❌</span>
-                                <a href="#">Lihat Detail</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2308101042</td>
-                            <td>Muhammad Irsyad Majid</td>
-                            <td>ACC Sempro</td>
-                            <td>1 Juni 2025</td>
-                            <td>
-                                <span class="icon-check">✔️</span>
-                                <span class="icon-cross">❌</span>
-                                <a href="#">Lihat Detail</a>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </section>

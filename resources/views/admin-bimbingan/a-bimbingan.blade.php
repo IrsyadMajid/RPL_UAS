@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard BIMA</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="{{ asset('css/Dosen_Bimbingan/style.css') }}" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -12,11 +12,11 @@
         <aside class="sidebar">
         <img src="{{ asset('images/Dosen_Bimbingan/logo-bima.png') }}" alt="Logo BIMA" class="logo" />
         <nav class="menu">
-            <a href="../dosen-dashboard/dashboard-dosen.html"><img src="{{ asset('images/Dosen_Bimbingan/icon-dashboard.png') }}" alt=""> Dashboard</a>
-            <a href="../dosen-mahasiswa copy/mahasiswa-dosen1.html" class="active"><img src="{{ asset('images/Dosen_Bimbingan/icon-mahasiswa.png') }}" alt=""> Mahasiswa</a>
-            <a href="../dosen-bimbingan/bimbingan-dosen.html"><img src="{{ asset('images/Dosen_Bimbingan/icon-bimbingan.png') }}" alt=""> Bimbingan</a>
+            <a href="{{ route('admin.a-dashboard') }}"><img src="{{ asset('images/Dosen_Bimbingan/icon-dashboard.png') }}" alt=""> Dashboard</a>
+            <a href="{{ route('admin.a-mahasiswa') }}"><img src="{{ asset('images/Dosen_Bimbingan/icon-mahasiswa.png') }}" alt=""> Mahasiswa</a>
+            <a href="{{ route('admin.a-bimbingan') }}" class="active"><img src="{{ asset('images/Dosen_Bimbingan/icon-bimbingan.png') }}" alt=""> Bimbingan</a>
         </nav>
-        <a class="logout" href="../login/1/login1.html"><img src="{{ asset('images/Dosen_Bimbingan/icon-logout.png') }}" alt=""> Logout</a>
+        <a class="logout" href="{{ route('login') }}"><img src="{{ asset('images/Dosen_Bimbingan/icon-logout.png') }}" alt=""> Logout</a>
         </aside>
 
         <main class="main">

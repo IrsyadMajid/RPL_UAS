@@ -12,11 +12,11 @@
         <aside class="sidebar">
         <img src="{{ asset('images/Dosen_Mahasiswa/logo-bima.png') }}" alt="Logo BIMA" class="logo" />
         <nav class="menu">
-            <a href="../dosen-dashboard/dashboard-dosen.html"><img src="{{ asset('images/Dosen_Mahasiswa/icon-dashboard.png') }}" alt=""> Dashboard</a>
-            <a href="../dosen-mahasiswa/mahasiswa-dosen.html" class="active"><img src="{{ asset('images/Dosen_Mahasiswa/icon-mahasiswa.png') }}" alt=""> Mahasiswa</a>
-            <a href="../dosen-bimbingan/bimbingan-dosen.html"><img src="{{ asset('images/Dosen_Mahasiswa/icon-bimbingan.png') }}" alt=""> Bimbingan</a>
+            <a href="{{ route('admin.a-dashboard') }}"><img src="{{ asset('images/Dosen_Mahasiswa/icon-dashboard.png') }}" alt=""> Dashboard</a>
+            <a href="{{ route('admin.a-mahasiswa') }}" class="active"><img src="{{ asset('images/Dosen_Mahasiswa/icon-mahasiswa.png') }}" alt=""> Mahasiswa</a>
+            <a href="{{ route('admin.a-bimbingan') }}"><img src="{{ asset('images/Dosen_Mahasiswa/icon-bimbingan.png') }}" alt=""> Bimbingan</a>
         </nav>
-        <a class="logout" href="../login/1/login1.html"><img src="{{ asset('images/Dosen_Mahasiswa/icon-logout.png') }}" alt=""> Logout</a>
+        <a class="logout" href="{{ route('login') }}"><img src="{{ asset('images/Dosen_Mahasiswa/icon-logout.png') }}" alt=""> Logout</a>
         </aside>
 
         <main class="main">

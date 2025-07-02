@@ -7,17 +7,31 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MentoringController;
 use App\Http\Controllers\PeringkatController;
 use App\Http\Controllers\LibraryController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminMahasiswaController;
+use App\Http\Controllers\Admin\AdminBimbinganController;
 
 Route::middleware('web')->group(function () {
 
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
+
     Route::post('/forgot-password', [AuthController::class, 'handleForgotPassword'])->name('submitLupaPassword');
     Route::get('/forgot-password', [AuthController::class, 'showForgotForm'])->name('lupaPassword');
     Route::get('/reset-password', [AuthController::class, 'showResetPasswordForm'])->name('resetPasswordForm');
     Route::post('/reset-password', [AuthController::class, 'resetPasswordManual'])->name('password.manual.reset');
     Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
     Route::post('/register', [AuthController::class, 'register']);
+
+    Route::prefix('admin')->name('admin.')->group(function() {
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+        Route::middleware(['auth:admin'])->group(function () {
+            Route::get('/a-dashboard', [AdminDashboardController::class, 'index'])->name('a-dashboard');
+            Route::get('/a-mahasiswa', [AdminMahasiswaController::class, 'index'])->name('a-mahasiswa');
+            Route::get('/a-bimbingan', [AdminBimbinganController::class, 'index'])->name('a-bimbingan');
+        });
+    });
 
     Route::get('/halaman1', function () { return view('storylogin.halaman1'); })->name('halaman1');
     Route::get('/halaman2', function () { return view('storylogin.halaman2'); })->name('halaman2');
