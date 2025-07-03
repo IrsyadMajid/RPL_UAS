@@ -50,12 +50,6 @@
                 <label>Jam Mentoring</label>
                 <input type="text" value="{{ $mentoring->proposed_date }}" readonly/>
 
-                <label>File</label>
-                <div class="file-preview">
-                    <i class="fa-solid fa-file"></i>
-                    <span>{{ $mentoring->file_name ?? 'File tidak tersedia' }}</span>
-                </div>
-
                 <div class="form-actions">
                     <form action="{{ route('mentoring.destroy', $mentoring->id) }}" method="POST">
                         @csrf

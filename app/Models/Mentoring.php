@@ -16,7 +16,7 @@ class Mentoring extends Model
         'proposed_time',
         'status',
         'jenis_bimbingan',
-        'file_path',
+        'file_content',
     ];
 
     public function user()

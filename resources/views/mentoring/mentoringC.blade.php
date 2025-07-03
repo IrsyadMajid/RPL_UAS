@@ -36,7 +36,7 @@
                 <h2 class="page-title">Pengajuan Mentoring</h2>
             </div>
             <div class="mentoring-form-container">
-                <form class="mentoring-form" action="{{ route('mentoring.store') }}" method="POST" enctype="multipart/form-data">
+                <form class="mentoring-form" action="{{ route('mentoring.store') }}" method="POST">
                 @csrf
                 <label>Judul Mentoring</label>
                 <input name="topic" type="text" placeholder="Masukkan Judul Mentoring" />
@@ -59,11 +59,8 @@
                     <option value="16:00">16.00</option>
                 </select>
 
-                <label>File</label>
-                    <div class="file-drop">
-                        <p>Drag and Drop filemu di sini,<br>atau klik unggah</p>
-                        <button type="button" class="upload-button">Unggah File</button>
-                    </div>
+                <label for="file_content">Catatan atau Isi File (Opsional)</label>
+                    <textarea id="file_content" name="file_content" rows="6" placeholder="Anda bisa menuliskan catatan, ringkasan, atau menempelkan isi teks dari file Anda di sini..."></textarea>
                     <button id="submit" type="submit" class="submit-button">Buat Jadwal Mentoring</button>
                 </form>
             </div>
@@ -71,19 +68,8 @@
     </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('Script loaded');
-
-        function navigateTo(routeName) {
-            console.log('Attempting to navigate to:', routeName);
-            try {
-                window.location.href = '{{ url('') }}' + routeName;
-            } catch (e) {
-                console.error('Navigation error:', e);
-            }
-        }
-
         document.querySelector('.back-button')?.addEventListener('click', () => {
-                navigateTo('/mentoring/pilih-jenis');
+             window.history.back();
         })
     });
 </script>

@@ -17,14 +17,14 @@ class MentoringController extends Controller
         }
 
         $upcoming = Mentoring::where('user_id', $userId)
-                             ->where('status', 'Diterima')
-                             ->latest()
-                             ->get();
+                                ->where('status', 'Diterima')
+                                ->latest()
+                                ->get();
 
         $history = Mentoring::where('user_id', $userId)
-                            ->where('status', '!=', 'Diterima')
-                            ->latest()
-                            ->get();
+                                ->where('status', '!=', 'Diterima')
+                                ->latest()
+                                ->get();
 
         return view('mentoring.mentoring1', compact('upcoming', 'history'));
     }
@@ -63,14 +63,8 @@ class MentoringController extends Controller
             'proposed_date' => 'required|date',
             'proposed_time' => 'required',
             'jenis_bimbingan' => 'required|string',
-            'file_upload' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
-            'jenis_bimbingan' => 'required|string',
+            'file_content' => 'nullable|string',
         ]);
-
-        $filePath = null;
-        if ($request->hasFile('file_upload')) {
-            $filePath = $request->file('file_upload')->store('mentoring_files', 'public');
-        }
 
         $proposedDateTime = $validatedData['proposed_date'] . ' ' . $validatedData['proposed_time'];
 
@@ -79,7 +73,7 @@ class MentoringController extends Controller
             'topic' => $validatedData['topic'],
             'proposed_date' => $proposedDateTime,
             'jenis_bimbingan' => $validatedData['jenis_bimbingan'],
-            'file_path' => $filePath,
+            'file_content' => $validatedData['file_content'],
             'status' => 'Menunggu',
         ]);
 
@@ -90,9 +84,6 @@ class MentoringController extends Controller
     public function destroy($id)
     {
         $mentoring = Mentoring::where('user_id', Auth::id())->findOrFail($id);
-        if ($mentoring->file_path) {
-            Storage::disk('public')->delete($mentoring->file_path);
-        }
 
         $mentoring->delete();
 
