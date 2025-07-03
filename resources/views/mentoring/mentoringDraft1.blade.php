@@ -11,34 +11,21 @@
         <aside class="sidebar">
             <img src="{{ asset('images/Peta/logo-bima.png') }}" alt="Logo BIMA" class="logo" />
             <nav class="menu">
-            <a href="{{ route('homepage') }}"
-                ><img src="{{ asset('images/Mentoring/icon-dashboard.png') }}" alt="Icon Dashboard" /> Dashboard</a
-            >
-            <a href="{{ route('peta.peta1') }}"
-                ><img src="{{ asset('images/Mentoring/icon-map.png') }}" alt="Icon Peta" /> Peta</a
-            >
-            <a href="{{ route('mentoring.index') }}" class="active"
-                ><img src="{{ asset('images/Mentoring/icon-bimbingan.png') }}" alt="Icon Mentoring" /> Mentoring</a
-            >
-            <a href="{{ route('peringkat') }}"
-                ><img src="{{ asset('images/Mentoring/icon-peringkat.png') }}" alt="Icon Peringkat" /> Peringkat</a
-            >
-            <a href="{{ route('library') }}"
-                ><img src="{{ asset('images/Mentoring/icon-library.png') }}" alt="Icon Library" /> Library</a
-            >
+                <a href="{{ route('homepage') }}"><img src="{{ asset('images/Mentoring/icon-dashboard.png') }}" alt="Icon Dashboard" /> Dashboard</a>
+                <a href="{{ route('peta.peta1') }}"><img src="{{ asset('images/Mentoring/icon-map.png') }}" alt="Icon Peta" /> Peta</a>
+                <a href="{{ route('mentoring.index') }}" class="active"><img src="{{ asset('images/Mentoring/icon-bimbingan.png') }}" alt="Icon Mentoring" /> Mentoring</a>
+                <a href="{{ route('peringkat') }}"><img src="{{ asset('images/Mentoring/icon-peringkat.png') }}" alt="Icon Peringkat" /> Peringkat</a>
+                <a href="{{ route('library') }}"><img src="{{ asset('images/Mentoring/icon-library.png') }}" alt="Icon Library" /> Library</a>
             </nav>
-            <a class="logout" href="{{ route('login') }}"
-            ><img src="{{ asset('images/Mentoring/icon-logout.png') }}" alt="Icon Log Out" /> Logout</a
-            >
+            <a class="logout" href="{{ route('login') }}"><img src="{{ asset('images/Mentoring/icon-logout.png') }}" alt="Icon Log Out" /> Logout</a>
         </aside>
 
         <main class="main">
         <header>
-            <div></div>
             <div class="top-right-icons">
-            <button class="icon-button"><i class="fa-solid fa-bell"></i></button>
-            <button class="icon-button"><i class="fa-solid fa-comment-dots"></i></button>
-            <img src="{{ asset('images/Mentoring/profile-dashboard.jpg') }}" alt="Profile" class="profile-image" />
+                <button class="icon-button"><i class="fa-solid fa-bell"></i></button>
+                <button class="icon-button"><i class="fa-solid fa-comment-dots"></i></button>
+                <img src="{{ asset('images/Mentoring/profile-dashboard.jpg') }}" alt="Profile" class="profile-image" />
             </div>
         </header>
 
@@ -47,87 +34,66 @@
             <div class="section-title">
                 <h3>Yang akan datang</h3>
             </div>
+            @forelse ($upcoming as $mentoring)
             <div class="mentoring-item">
                 <div class="mentoring-left">
-                <div>
-                    <img src="{{ asset('images/Mentoring/icon-buku.png') }}" alt="Book Icon" style="width: 18px; height: 18px;" />
-                </div>
-                <div class="text-wrapper">
-                    <p class="mentoring-title">Draft BAB II</p>
-                    <p class="mentoring-time" >19 Mei 2025 - 10:00 (Online Meet)</p>
-                </div>
+                    <div>
+                        <img src="{{ asset('images/Mentoring/icon-buku.png') }}" alt="Book Icon" style="width: 18px; height: 18px;" />
+                    </div>
+                    <div class="text-wrapper">
+                        <p class="mentoring-title">{{ $mentoring->topic }}</p>
+                        <p class="mentoring-time">
+                        {{ \Carbon\Carbon::parse($mentoring->proposed_date)->format('d M Y - H:i') }} ({{ $mentoring->jenis_bimbingan }})
+                        </p>
+                    </div>
                 </div>
                 <span class="claimed-tag">+40 XP</span>
             </div>
+            @empty
+                <p class="empty-message">Tidak ada jadwal bimbingan yang akan datang.</p>
+            @endforelse
 
             <div class="section-title">
                 <h3>Riwayat Bimbingan</h3>
             </div>
 
             <div class="mentoring-list">
+                @forelse ($history as $mentoring)
                 <div class="mentoring-item">
-                <div class="mentoring-left">
-                    <div class="icon-wrapper">
-                    <img src="{{ asset('images/Mentoring/icon-buku.png') }}" alt="Book Icon" style="width: 18px; height: 18px;" />
+                    <div class="mentoring-left">
+                        <div class="icon-wrapper">
+                            <img src="{{ asset('images/Mentoring/icon-buku.png') }}" alt="Book Icon" style="width: 18px; height: 18px;" />
+                        </div>
+                        <div class="text-wrapper">
+                            <p class="mentoring-title">{{ $mentoring->topic }}</p>
+                            <p class="mentoring-time">
+                                {{ \Carbon\Carbon::parse($mentoring->proposed_date)->format('d M Y') }} - ({{ $mentoring->jenis_bimbingan }})
+                            </p>
+                        </div>
                     </div>
-                    <div class="text-wrapper">
-                    <p class="mentoring-title">Draft BAB II</p>
-                    <p class="mentoring-time">12 Mei 2025 - 14:00 (Online Meet)</p>
-                    </div>
-                </div>
-                <button class="upload-button">Unggah Bukti</button>
+                    @if ($mentoring->status == 'Menunggu')
+                            <span class="status-tag pending">Menunggu</span>
+                        @elseif ($mentoring->status == 'Ditolak')
+                            <span class="status-tag rejected">Ditolak</span>
+                        @else
+                            <span class="status-tag claimed">Terklaim</span>
+                        @endif
                 </div>
 
-                <div class="mentoring-item">
-                <div class="mentoring-left">
-                    <div class="icon-wrapper">
-                    <img src="{{ asset('images/Mentoring/icon-buku.png') }}" alt="Book Icon" style="width: 18px; height: 18px;" />
-                    </div>
-                    <div class="text-wrapper">
-                    <p class="mentoring-title">Draft BAB II</p>
-                    <p class="mentoring-time">10 Mei 2025 - (Online)</p>
-                    </div>
-                </div>
-                <span class="claimed-tag">Terklaim</span>
-                </div>
-
-                <div class="mentoring-item">
-                <div class="mentoring-left">
-                    <div class="icon-wrapper">
-                    <img src="{{ asset('images/Mentoring/icon-buku.png') }}" alt="Book Icon" style="width: 18px; height: 18px;" />
-                    </div>
-                    <div class="text-wrapper">
-                    <p class="mentoring-title">Draft BAB I</p>
-                    <p class="mentoring-time">5 Mei 2025 - (Online)</p>
-                    </div>
-                </div>
-                <span class="claimed-tag">Terklaim</span>
-                </div>
-
-                <div class="mentoring-item">
-                <div class="mentoring-left">
-                    <div class="icon-wrapper">
-                    <img src="{{ asset('images/Mentoring/icon-buku.png') }}" alt="Book Icon" style="width: 18px; height: 18px;" />
-                    </div>
-                    <div class="text-wrapper">
-                    <p class="mentoring-title">Draft BAB I</p>
-                    <p class="mentoring-time">1 Mei 2025 - 07:00 (Offline)</p>
-                    </div>
-                </div>
-                <span class="claimed-tag">Terklaim</span>
-                </div>
-            </div>
-            </div>
-
-            <div class="maskot-wrapper">
-            <img src="{{ asset('images/Mentoring/k-bima.png') }}" alt="maskot" class="maskot" />
-            <div id="chat-bubble" class="chat-bubble">
-                Sudah mulai banyak sesi telah kamu lalui, merupakan satu langkah lebih dekat menuju gelar magister pengetahuan. Teruslah melangkah, jangan lengah!
-            </div>
+                @empty
+                    <p class="empty-message">Belum ada riwayat bimbingan.</p>
+                @endforelse
             </div>
         </div>
 
-        <button class="mentoring-submit">Ajukan Jadwal Mentoring</button>
+            <div class="maskot-wrapper">
+            <img src="{{ asset('images/Mentoring/k-bima.png') }}" alt="maskot" class="maskot" />
+                <div id="chat-bubble" class="chat-bubble">
+                    Sudah mulai banyak sesi telah kamu lalui, merupakan satu langkah lebih dekat menuju gelar magister pengetahuan. Teruslah melangkah, jangan lengah!
+                </div>
+            </div>
+        </div>
+        <a href="{{ route('mentoring.draft') }}" class="mentoring-submit">Ajukan Jadwal Mentoring</a>
         </main>
     </div>
 

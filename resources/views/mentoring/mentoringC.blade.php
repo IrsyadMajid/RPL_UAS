@@ -52,34 +52,32 @@
                 <form class="mentoring-form" action="{{ route('mentoring.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label>Judul Mentoring</label>
-                <input type="text" placeholder="Masukkan Judul Mentoring" />
+                <input name="topic" type="text" placeholder="Masukkan Judul Mentoring" />
 
                 <label>Pilih Dosen Pembimbing</label>
-                <select>
-                    <option>--- Dosen Pembimbing ---</option>
-                    <option>1. Pratama Wirya Atmaja, S.Kom. M.Kom.</option>
-                    <option>2. Henni Endah Wahanani, S.T., M.Kom.</option>
+                <select name="jenis_bimbingan" required>
+                    <option value="">--- Dosen Pembimbing ---</option>
+                    <option value="Pratama Wirya Atmaja, S.Kom. M.Kom.">1. Pratama Wirya Atmaja, S.Kom. M.Kom.</option>
+                    <option value="Henni Endah Wahanani, S.T., M.Kom.">2. Henni Endah Wahanani, S.T., M.Kom.</option>
                 </select>
 
                 <label>Pilih tanggal mentoring</label>
-                <input type="date" />
+                <input name="proposed_date" type="date" required/>
 
                 <label>Jam Mentoring</label>
-                <select>
-                    <option>--- Jam Mentoring ---</option>
-                    <option>14:00</option>
-                    <option>15:00</option>
-                    <option>16.00</option>
+                <select name="proposed_time" required>
+                    <option value="">--- Jam Mentoring ---</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16.00</option>
                 </select>
 
                 <label>File</label>
                     <div class="file-drop">
-                    <p>Drag and Drop filemu di sini,<br>atau klik unggah</p>
-                    <button type="button" class="upload-button">Unggah File</button>
+                        <p>Drag and Drop filemu di sini,<br>atau klik unggah</p>
+                        <button type="button" class="upload-button">Unggah File</button>
                     </div>
-
-                <button id="submit" type="submit" class="submit-button">Buat Jadwal Mentoring</button>
-
+                    <button id="submit" type="submit" class="submit-button">Buat Jadwal Mentoring</button>
                 </form>
             </div>
         </main>

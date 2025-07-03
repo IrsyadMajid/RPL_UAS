@@ -12,7 +12,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('topic');
-            $table->date('proposed_date');
+            $table->dateTime('proposed_date');
+            $table->string('jenis_bimbingan');
+            $table->string('file_path')->nullable();
             $table->string('status')->default('Menunggu');
             $table->timestamps();
         });

@@ -64,6 +64,7 @@ class MentoringController extends Controller
             'proposed_time' => 'required',
             'jenis_bimbingan' => 'required|string',
             'file_upload' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+            'jenis_bimbingan' => 'required|string',
         ]);
 
         $filePath = null;
@@ -83,7 +84,7 @@ class MentoringController extends Controller
         ]);
 
         return redirect()->route('mentoring.D', ['id' => $newMentoring->id])
-                         ->with('success', 'Jadwal bimbingan berhasil diajukan!');
+            ->with('success', 'Jadwal bimbingan berhasil diajukan!');
     }
 
     public function destroy($id)

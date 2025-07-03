@@ -113,7 +113,6 @@
     </div>
 
     <script>
-        // Fungsi untuk menampilkan dan menutup modal
         function showAlasan(nama, npm, isi) {
             document.getElementById('alasanNama').textContent = nama;
             document.getElementById('alasanNPM').textContent = npm;

@@ -12,25 +12,13 @@
         <aside class="sidebar">
             <img src="{{ asset('images/Peta/logo-bima.png') }}" alt="Logo BIMA" class="logo" />
             <nav class="menu">
-            <a href="{{ route('homepage') }}"
-                ><img src="{{ asset('images/Mentoring/icon-dashboard.png') }}" alt="Icon Dashboard" /> Dashboard</a
-            >
-            <a href="{{ route('peta.peta1') }}"
-                ><img src="{{ asset('images/Mentoring/icon-map.png') }}" alt="Icon Peta" /> Peta</a
-            >
-            <a href="{{ route('mentoring.index') }}" class="active"
-                ><img src="{{ asset('images/Mentoring/icon-bimbingan.png') }}" alt="Icon Mentoring" /> Mentoring</a
-            >
-            <a href="{{ route('peringkat') }}"
-                ><img src="{{ asset('images/Mentoring/icon-peringkat.png') }}" alt="Icon Peringkat" /> Peringkat</a
-            >
-            <a href="{{ route('library') }}"
-                ><img src="{{ asset('images/Mentoring/icon-library.png') }}" alt="Icon Library" /> Library</a
-            >
+                <a href="{{ route('homepage') }}"><img src="{{ asset('images/Mentoring/icon-dashboard.png') }}" alt="Icon Dashboard" /> Dashboard</a>
+                <a href="{{ route('peta.peta1') }}"><img src="{{ asset('images/Mentoring/icon-map.png') }}" alt="Icon Peta" /> Peta</a>
+                <a href="{{ route('mentoring.index') }}" class="active"><img src="{{ asset('images/Mentoring/icon-bimbingan.png') }}" alt="Icon Mentoring" /> Mentoring</a>
+                <a href="{{ route('peringkat') }}"><img src="{{ asset('images/Mentoring/icon-peringkat.png') }}" alt="Icon Peringkat" /> Peringkat</a>
+                <a href="{{ route('library') }}"><img src="{{ asset('images/Mentoring/icon-library.png') }}" alt="Icon Library" /> Library</a>
             </nav>
-            <a class="logout" href="{{ route('login') }}"
-            ><img src="{{ asset('images/Mentoring/icon-logout.png') }}" alt="Icon Log Out" /> Logout</a
-            >
+                <a class="logout" href="{{ route('login') }}"><img src="{{ asset('images/Mentoring/icon-logout.png') }}" alt="Icon Log Out" /> Logout</a>
         </aside>
 
         <main class="main">
