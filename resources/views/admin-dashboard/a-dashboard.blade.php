@@ -21,7 +21,6 @@
 
         <main class="main">
             <header>
-                <div></div>
                 <div class="top-right-icons">
                 <button class="icon-button"><i class="fa-solid fa-bell"></i></button>
                 <img src="{{ asset('images/Dosen_Dashboard/dashboard-profile.png') }}" alt="Profile" class="profile-image" />
@@ -73,8 +72,14 @@
                         <h4>Statistik Mahasiswa</h4>
                         <canvas id="pieChart"></canvas>
                         <div class="chart-legend">
-                            <div><span style="color:#7c4dff; font-weight:bold;">▣</span> Proses Bimbingan <span style="color:#7c4dff;">87%</span></div>
-                            <div><span style="color:#ffca28; font-weight:bold;">▣</span> Sudah Sidang <span style="color:#ffca28;">13%</span></div>
+                            <div>
+                                <span style="color:#7c4dff; font-weight:bold;">▣</span> Proses Bimbingan
+                                <span style="color:#7c4dff;">{{ $pieChartData['proses_percentage'] }}%</span>
+                            </div>
+                            <div>
+                                <span style="color:#ffca28; font-weight:bold;">▣</span> Sudah Sidang
+                                <span style="color:#ffca28;">{{ $pieChartData['sidang_percentage'] }}%</span>
+                            </div>
                         </div>
                     </div>
 
@@ -98,19 +103,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $upcoming_guidances as $guidances )
+                        @forelse ( $upcoming_guidances as $guidance )
                         <tr>
-                            <td>{{ $guidances['npm'] }}</td>
-                            <td>{{ $guidances['name'] }}</td>
-                            <td>{{ $guidances['request_type'] }}</td>
-                            <td>{{ $guidances['date'] }}</td>
+                            <td>{{ $guidance->user->npm ?? 'N/A' }}</td>
+                            <td>{{ $guidance->user->name ?? 'N/A' }}</td>
+                            <td>{{ $guidance->topic ?? 'ACC Bimbingan' }}</td> <td>{{ \Carbon\Carbon::parse($guidance->proposed_date)->format('j F Y') }}</td>
                             <td>
-                                <span class="icon-check">✔️</span>
-                                <span class="icon-cross">❌</span>
+                                <a href="{{ route('admin.bimbingan.approve', $guidance->id) }}" class="icon-check">✔️</a>
+                                <a href="{{ route('admin.bimbingan.reject', $guidance->id) }}" class="icon-cross">❌</a>
                                 <a href="#">Lihat Detail</a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="5" style="text-align:center;">Tidak ada bimbingan yang akan datang.</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </section>
@@ -118,47 +126,51 @@
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
+<script>
+    // Grafik Bimbingan (Bar Chart)
     const barCtx = document.getElementById('barChart');
     new Chart(barCtx, {
         type: 'bar',
         data: {
-        labels: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'],
-        datasets: [{
-            label: 'Jumlah Bimbingan',
-            data: [5, 15, 15, 12, 9],
-            backgroundColor: '#7c4dff'
-        }]
+            // Gunakan data dari controller
+            labels: @json($barChartData['labels']),
+            datasets: [{
+                label: 'Jumlah Bimbingan',
+                // Gunakan data dari controller
+                data: @json($barChartData['data']),
+                backgroundColor: '#7c4dff'
+            }]
         },
-        options: {
-        responsive: true,
-        plugins: {
-            legend: { display: false }
-        }
+        options: { // ... (opsi lainnya tetap sama)
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            }
         }
     });
 
+    // Statistik Mahasiswa (Pie/Doughnut Chart)
     const pieCtx = document.getElementById('pieChart');
     new Chart(pieCtx, {
         type: 'doughnut',
         data: {
-        labels: ['Proses Bimbingan', 'Sudah Sidang'],
-        datasets: [{
-            data: [87, 13],
-            backgroundColor: ['#7c4dff', '#ffca28']
-        }]
+            labels: ['Proses Bimbingan', 'Sudah Sidang'],
+            datasets: [{
+                // Gunakan data dari controller
+                data: @json($pieChartData['data']),
+                backgroundColor: ['#7c4dff', '#ffca28']
+            }]
         },
-        options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-            display: false
+        options: { // ... (opsi lainnya tetap sama)
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
             }
         }
-        }
     });
-    </script>
 </script>
 </body>
 </html>

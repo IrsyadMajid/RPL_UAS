@@ -85,7 +85,7 @@
                     @endforelse
                 </tbody>
             </table>
-            <div class="table-info">Menampilkan 1–20 dari 999 data</div>
+            <div class="table-info">Menampilkan 1-20 dari 999 data</div>
 
             <div class="pagination">
                 <button disabled>&lt;</button>
