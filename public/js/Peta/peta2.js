@@ -243,3 +243,183 @@ window.closePopup = function (popupId) {
   const target = document.getElementById(popupId);
   if (target) target.style.display = "none";
 };
+
+// Menunggu hingga seluruh konten halaman dimuat
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- FUNGSI BARU: Untuk memuat data dari localStorage ---
+    function muatData() {
+        // Ambil data yang tersimpan dengan kunci 'yudisiumData'
+        const dataTersimpan = localStorage.getItem('yudisiumData');
+
+        // Jika ada data yang tersimpan
+        if (dataTersimpan) {
+            // Ubah kembali data dari string JSON menjadi objek
+            const data = JSON.parse(dataTersimpan);
+
+            // Masukkan data ke setiap kolom input di form
+            document.getElementById('judulSkripsi').value = data.judul || '';
+            document.getElementById('jadwal').value = data.jadwal || '';
+            document.getElementById('linkSkripsi').value = data.skripsiFinal || '';
+            document.getElementById('linkLampiran').value = data.lampiran || '';
+
+            console.log('✅ Data berhasil dimuat dari localStorage.');
+        }
+    }
+
+    // Cari tombol "Kirim" berdasarkan ID-nya
+    const submitButton = document.getElementById('submit121-jadwal');
+
+    // Tambahkan event listener untuk merespons klik pada tombol
+    submitButton.addEventListener('click', function() {
+
+        // 1. Ambil nilai dari setiap input form
+        const judulSkripsi = document.getElementById('judulSkripsi').value;
+        const jadwalYudisium = document.getElementById('jadwal').value;
+        const linkSkripsi = document.getElementById('linkSkripsi').value;
+        const linkLampiran = document.getElementById('linkLampiran').value;
+
+        // 2. Validasi sederhana: pastikan input yang wajib sudah diisi
+        if (!judulSkripsi || !jadwalYudisium) {
+            alert('⚠️ Mohon isi Judul Skripsi dan pilih Jadwal Yudisium.');
+            return;
+        }
+
+        // 3. Simpan data dalam sebuah objek
+        const formData = {
+            judul: judulSkripsi,
+            jadwal: jadwalYudisium,
+            skripsiFinal: linkSkripsi,
+            lampiran: linkLampiran
+        };
+
+        // --- BARIS BARU: Simpan data ke localStorage ---
+        // Ubah objek menjadi string JSON dan simpan dengan kunci 'yudisiumData'
+        localStorage.setItem('yudisiumData', JSON.stringify(formData));
+
+        // 4. Tampilkan data yang berhasil dikumpulkan
+        alert('✅ Data berhasil disimpan!\n\n' + JSON.stringify(formData, null, 2));
+    });
+
+    // --- PANGGIL FUNGSI: Muat data saat halaman dibuka ---
+    muatData();
+
+});
+
+// Menunggu hingga seluruh konten halaman dimuat
+document.addEventListener('DOMContentLoaded', function() {
+
+    const storageKey = 'revisiFinalData'; // Kunci unik untuk localStorage
+
+    // Fungsi untuk memuat data dari localStorage
+    function muatData() {
+        const dataTersimpan = localStorage.getItem(storageKey);
+        if (dataTersimpan) {
+            const data = JSON.parse(dataTersimpan);
+            const inputElement = document.getElementById('linkRevisiFinal');
+            if (inputElement && data.link) {
+                inputElement.value = data.link;
+                console.log('✅ Data revisi final berhasil dimuat.');
+            }
+        }
+    }
+
+    // Cari tombol "Kirim" berdasarkan ID-nya
+    const submitButton = document.getElementById('submit102-submit');
+
+    // Tambahkan event listener untuk merespons klik pada tombol
+    submitButton.addEventListener('click', function() {
+
+        // 1. Ambil nilai dari input link
+        const linkRevisi = document.getElementById('linkRevisiFinal').value;
+
+        // 2. Validasi sederhana
+        if (!linkRevisi) {
+            alert('⚠️ Mohon isi link revisi final terlebih dahulu.');
+            return;
+        }
+
+        // 3. Buat objek untuk data
+        const formData = {
+            link: linkRevisi
+        };
+
+        // 4. Simpan data ke localStorage
+        localStorage.setItem(storageKey, JSON.stringify(formData));
+
+        // 5. Beri notifikasi ke pengguna
+        alert('✅ Link revisi final berhasil disimpan!');
+    });
+
+    // Panggil fungsi muatData saat halaman dibuka
+    muatData();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- LOGIC FOR FORM 1: PENDAFTARAN SEMINAR PROPOSAL ---
+    const proposalStorageKey = 'seminarProposalData';
+
+    function muatDataProposal() {
+        const dataTersimpan = localStorage.getItem(proposalStorageKey);
+        if (dataTersimpan) {
+            const data = JSON.parse(dataTersimpan);
+            document.getElementById('judulProposal').value = data.judul || '';
+            document.getElementById('jadwalProposal').value = data.jadwal || '';
+            document.getElementById('linkProposal').value = data.link || '';
+            console.log('✅ Data Pendaftaran Proposal dimuat.');
+        }
+    }
+
+    const submitProposalBtn = document.getElementById('submit51-jadwal');
+    if (submitProposalBtn) {
+        submitProposalBtn.addEventListener('click', function() {
+            const formData = {
+                judul: document.getElementById('judulProposal').value,
+                jadwal: document.getElementById('jadwalProposal').value,
+                link: document.getElementById('linkProposal').value
+            };
+
+            if (!formData.judul || !formData.jadwal) {
+                alert('⚠️ Mohon isi Judul dan Jadwal Proposal terlebih dahulu.');
+                return;
+            }
+
+            localStorage.setItem(proposalStorageKey, JSON.stringify(formData));
+            alert('✅ Data Pendaftaran Seminar Proposal berhasil disimpan!');
+        });
+    }
+
+    // --- LOGIC FOR FORM 2: UNGGAH BUKTI SEMINAR PROPOSAL ---
+    const buktiStorageKey = 'buktiSeminarData';
+
+    function muatDataBukti() {
+        const dataTersimpan = localStorage.getItem(buktiStorageKey);
+        if (dataTersimpan) {
+            const data = JSON.parse(dataTersimpan);
+            document.getElementById('linkBuktiProposal').value = data.linkBukti || '';
+            console.log('✅ Data Bukti Proposal dimuat.');
+        }
+    }
+
+    const submitBuktiBtn = document.getElementById('submit52-submit');
+    if (submitBuktiBtn) {
+        submitBuktiBtn.addEventListener('click', function() {
+            const formData = {
+                linkBukti: document.getElementById('linkBuktiProposal').value
+            };
+
+            if (!formData.linkBukti) {
+                alert('⚠️ Mohon isi link bukti pelaksanaan terlebih dahulu.');
+                return;
+            }
+
+            localStorage.setItem(buktiStorageKey, JSON.stringify(formData));
+            alert('✅ Link Bukti Pelaksanaan berhasil disimpan!');
+        });
+    }
+
+    // --- INITIALIZE BOTH FORMS ON PAGE LOAD ---
+    muatDataProposal();
+    muatDataBukti();
+});

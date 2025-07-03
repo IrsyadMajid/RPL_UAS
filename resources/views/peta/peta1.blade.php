@@ -12,40 +12,22 @@
         <aside class="sidebar">
             <img src="{{ asset('images/Peta/logo-bima.png') }}" alt="Logo BIMA" class="logo" />
             <nav class="menu">
-            <a href="{{ route('homepage') }}"
-                ><img src="{{ asset('images/Peta/icon-dashboard.png') }}" alt="Icon Dashboard" /> Dashboard</a
-            >
-            <a href="{{ route('peta.peta1') }}" class="active"
-                ><img src="{{ asset('images/Peta/icon-peta.png') }}" alt="Icon Peta" /> Peta</a
-            >
-            <a href="{{ route('mentoring.index') }}"
-                ><img src="{{ asset('images/Peta/icon-mentoring.png') }}" alt="Icon Mentoring" /> Mentoring</a
-            >
-            <a href="{{ route('peringkat') }}"
-                ><img src="{{ asset('images/Peta/icon-peringkat.png') }}" alt="Icon Peringkat" /> Peringkat</a
-            >
-            <a href="{{ route('library') }}"
-                ><img src="{{ asset('images/Peta/icon-library.png') }}" alt="Icon Library" /> Library</a
-            >
+                <a href="{{ route('homepage') }}"><img src="{{ asset('images/Peta/icon-dashboard.png') }}" alt="Icon Dashboard"/> Dashboard</a>
+                <a href="{{ route('peta.peta1') }}" class="active"><img src="{{ asset('images/Peta/icon-peta.png') }}" alt="Icon Peta"/> Peta</a>
+                <a href="{{ route('mentoring.index') }}"><img src="{{ asset('images/Peta/icon-mentoring.png') }}" alt="Icon Mentoring"/> Mentoring</a>
+                <a href="{{ route('peringkat') }}"><img src="{{ asset('images/Peta/icon-peringkat.png') }}" alt="Icon Peringkat"/> Peringkat</a>
+                <a href="{{ route('library') }}"><img src="{{ asset('images/Peta/icon-library.png') }}" alt="Icon Library"/> Library</a>
             </nav>
-            <a class="logout" href="{{ route('login') }}"
-            ><img src="{{ asset('images/Peta/icon-logout.png') }}" alt="Icon Log Out" /> Logout</a
-            >
+                <a class="logout" href="{{ route('login') }}"><img src="{{ asset('images/Peta/icon-logout.png') }}" alt="Icon Log Out"/> Logout</a>
         </aside>
-
         <main class="main">
             <header class="main-header">
-            <div></div>
-            <div class="top-right-icons">
-                <button class="icon-button">
-                <i class="fa-solid fa-bell"></i>
-                </button>
-                <img
-                src="{{ asset('images/Peta/profile-dashboard.jpg') }}"
-                alt="Profile"
-                class="profile-image"
-                />
-            </div>
+                <div class="top-right-icons">
+                    <button class="icon-button">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+                    <img src="{{ asset('images/Peta/profile-dashboard.jpg') }}" alt="Profile" class="profile-image"/>
+                </div>
             </header>
 
             <h2 class="peta-title">Peta Level</h2>
@@ -53,38 +35,22 @@
             <div class="peta-container">
             <div class="jalur atas">
                 <div id="level-1" class="level">
-                <img
-                    src="{{ asset('images/Peta/smoothcorner.png') }}"
-                    alt="Bintang"
-                    class="bintang"
-                />
+                <img src="{{ asset('images/Peta/smoothcorner.png') }}" alt="Bintang" class="bintang"/>
                 <p><strong>Level 1</strong><br />Gerbang Arcana</p>
                 </div>
                 <div class="line"></div>
                 <div id="level-2" class="level">
-                <img
-                    src="{{ asset('images/Peta/smoothcorner.png') }}"
-                    alt="Bintang"
-                    class="bintang"
-                />
+                <img src="{{ asset('images/Peta/smoothcorner.png') }}" alt="Bintang" class="bintang"/>
                 <p><strong>Level 2</strong><br />Mencari Mentor</p>
                 </div>
                 <div class="line"></div>
                 <div id="level-3" class="level">
-                <img
-                    src="{{ asset('images/Peta/smoothcorner.png') }}"
-                    alt="Bintang"
-                    class="bintang"
-                />
+                <img src="{{ asset('images/Peta/smoothcorner.png') }}" alt="Bintang" class="bintang"/>
                 <p><strong>Level 3</strong><br />Ritual Judul</p>
                 </div>
                 <div class="line"></div>
                 <div id="level-4" class="level">
-                <img
-                    src="{{ asset('images/Peta/smoothcorner.png') }}"
-                    alt="Bintang"
-                    class="bintang"
-                />
+                <img src="{{ asset('images/Peta/smoothcorner.png') }}" alt="Bintang" class="bintang"/>
                 <p><strong>Level 4</strong><br />Awal Perjalanan</p>
                 </div>
             </div>
@@ -283,32 +249,22 @@
                 <label for="dosen1">Pilih Dosen Pembimbing</label>
                 <select id="dosen1">
                 <option value="">--- Dosen Pembimbing ---</option>
-                <option value="dosen1">Dosen Pembimbing 1</option>
-                <option value="dosen2">Dosen Pembimbing 2</option>
-                <option value="dosen3">Dosen Pembimbing 3</option>
+                <option value="Pratama Wirya Atmaja, S.Kom. M.Kom.">1. Pratama Wirya Atmaja, S.Kom. M.Kom.</option>
+                <option value="Henni Endah Wahanani, S.T., M.Kom.">2. Henni Endah Wahanani, S.T., M.Kom.</option>
                 </select>
 
                 <label for="alasan1">Alasan memilih dosen pembimbing 1</label>
-                <input
-                type="text"
-                id="alasan1"
-                placeholder="Berikan alasan kenapa memilih Dosen Pembimbing 1"
-                />
+                <input type="text" id="alasan1" placeholder="Berikan alasan kenapa memilih Dosen Pembimbing 1"/>
 
                 <label for="dosen2">Pilih Dosen Pembimbing</label>
                 <select id="dosen2">
                 <option value="">--- Dosen Pembimbing ---</option>
-                <option value="dosen1">Dosen Pembimbing 1</option>
-                <option value="dosen2">Dosen Pembimbing 2</option>
-                <option value="dosen3">Dosen Pembimbing 3</option>
+                <option value="Pratama Wirya Atmaja, S.Kom. M.Kom.">1. Pratama Wirya Atmaja, S.Kom. M.Kom.</option>
+                <option value="Henni Endah Wahanani, S.T., M.Kom.">2. Henni Endah Wahanani, S.T., M.Kom.</option>
                 </select>
 
                 <label for="alasan2">Alasan memilih dosen pembimbing 2</label>
-                <input
-                type="text"
-                id="alasan2"
-                placeholder="Berikan alasan kenapa memilih Dosen Pembimbing 2"
-                />
+                <input type="text" id="alasan2" placeholder="Berikan alasan kenapa memilih Dosen Pembimbing 2"/>
                 <button id="submit21-pembimbing" class="submit21-btn">Kirim</button>
             </div>
             </div>
