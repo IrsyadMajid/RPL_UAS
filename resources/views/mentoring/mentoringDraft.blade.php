@@ -87,7 +87,7 @@
         }
 
         document.querySelector('.back-button')?.addEventListener('click', () => {
-                navigateTo('/mentoring/2');
+                navigateTo('/mentoring/pilih-jenis');
         })
     });
 </script>

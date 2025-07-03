@@ -31,14 +31,10 @@
                 <a class="logout" href="{{ route('login') }}"
                 ><img src="{{ asset('images/Mentoring/icon-logout.png') }}" alt="Icon Log Out" /> Logout</a
                 >
-                <a class="logout" href="{{ route('login') }}"
-                ><img src="{{ asset('images/Mentoring/icon-logout.png') }}" alt="Icon Log Out" /> Logout</a
-                >
         </aside>
 
         <main class="main">
             <header>
-                <div></div>
                 <div class="top-right-icons">
                 <button class="icon-button"><i class="fa-solid fa-bell"></i></button>
                 <img src="{{ asset('images/Mentoring/profile-dashboard.jpg') }}" alt="Profile" class="profile-image" />
@@ -84,19 +80,19 @@
         }
 
         document.querySelector('#review')?.addEventListener('click', () => {
-            navigateTo('/mentoring/draft');
+            navigateTo('/mentoring/ajukan-draft');
         });
 
         document.querySelector('#offline')?.addEventListener('click', () => {
-            navigateTo('/mentoring/C');
+            navigateTo('/mentoring/ajukan-meet');
         });
 
         document.querySelector('#online')?.addEventListener('click', () => {
-            navigateTo('/mentoring/C');
+            navigateTo('/mentoring/ajukan-meet');
         });
 
         document.querySelector('.back-button')?.addEventListener('click', () => {
-            navigateTo('/mentoring/1');
+            navigateTo('/mentoring/list');
         });
     });
 </script>
