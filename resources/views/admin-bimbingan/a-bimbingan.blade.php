@@ -94,24 +94,10 @@
                             @endforelse
                         </tbody>
                     </table>
-                    <div class="pagination">
-                        {{-- {{ $requests->links() }} --}}
-                    </div>
                 </div>
             </section>
         </main>
     </div>
-
-    {{-- <div class="modal-overlay" id="alasanModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('alasanModal')"><i class="fa fa-times"></i></button>
-            <h2><span class="highlight">Alasan</span> Permintaan</h2>
-            <div class="modal-row"><strong>Nama</strong> <span id="alasanNama"></span></div>
-            <div class="modal-row"><strong>NPM</strong> <span id="alasanNPM"></span></div>
-            <div class="modal-row"><strong>Alasan/Topik</strong> <p id="alasanIsi"></p></div>
-        </div>
-    </div> --}}
-
     <script>
         function showAlasan(nama, npm, isi) {
             document.getElementById('alasanNama').textContent = nama;

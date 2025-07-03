@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Mentoring;
 
 class AdminMahasiswaController extends Controller
 {
@@ -12,19 +12,11 @@ class AdminMahasiswaController extends Controller
     {
         $admin = Auth::guard('admin')->user();
 
-        $mahasiswa = [
-            [
-                'npm' => '2308100306',
-                'nama' => 'Berlian Ika Isabela',
-                'prodi' => 'Teknik Informatika',
-                'semester' => 7,
-                'status' => 'Aktif'
-            ],
-        ];
+        $approvedMentorings = Mentoring::where('status', 'Diterima')->with('user')->get();
 
         return view('admin-mahasiswa.a-mahasiswa', [
             'admin' => $admin,
-            'mahasiswa' => $mahasiswa
+            'approvedRequests' => $approvedMentorings
         ]);
     }
 }
