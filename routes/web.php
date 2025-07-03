@@ -15,13 +15,13 @@ Route::middleware('web')->group(function () {
 
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
 
     Route::post('/forgot-password', [AuthController::class, 'handleForgotPassword'])->name('submitLupaPassword');
     Route::get('/forgot-password', [AuthController::class, 'showForgotForm'])->name('lupaPassword');
     Route::get('/reset-password', [AuthController::class, 'showResetPasswordForm'])->name('resetPasswordForm');
     Route::post('/reset-password', [AuthController::class, 'resetPasswordManual'])->name('password.manual.reset');
-    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-    Route::post('/register', [AuthController::class, 'register']);
 
     Route::prefix('admin')->name('admin.')->group(function() {
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

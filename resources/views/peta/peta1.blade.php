@@ -176,44 +176,43 @@
             </div>
 
             <div id="popup-level12" class="popup12-container" style="display: none">
-            <div class="popup12-content">
-                <button class="close12-popup" onclick="closePopup('popup-level12')">
-                ✖
-                </button>
-                <h2>Beri nama tongkat sihirmu</h2>
-                <p>
-                Setiap penyihir hebat memulai petualangannya dengan sebuah tongkat
-                sihir yang memiliki nama unik. Berikan nama untuk tongkat sihirmu
-                sebagai tanda resmi memulai perjalanan skripsimu!
-                </p>
+                <div class="popup12-content">
+                    <button class="close12-popup" onclick="closePopup('popup-level12')">
+                    ✖
+                    </button>
+                    <h2>Beri nama tongkat sihirmu</h2>
+                    <p>
+                    Setiap penyihir hebat memulai petualangannya dengan sebuah tongkat
+                    sihir yang memiliki nama unik. Berikan nama untuk tongkat sihirmu
+                    sebagai tanda resmi memulai perjalanan skripsimu!
+                    </p>
 
-                <label for="nama">Nama Lengkap</label>
-                <input
-                type="text"
-                id="nama"
-                placeholder="Masukkan nama lengkap anda"
-                />
+                    <label for="nama">Nama Lengkap</label>
+                    <input
+                    type="text"
+                    id="nama"
+                    placeholder="Masukkan nama lengkap anda"
+                    />
 
-                <label for="npm">NPM</label>
-                <input type="text" id="npm" placeholder="Masukkan NPM anda" />
+                    <label for="npm">NPM</label>
+                    <input type="text" id="npm" placeholder="Masukkan NPM anda" />
+                    <label for="topik">Topik Skripsi</label>
+                    <input
+                    type="text"
+                    id="topik"
+                    placeholder="Masukkan topik skripsi anda"
+                    />
 
-                <label for="topik">Topik Skripsi</label>
-                <input
-                type="text"
-                id="topik"
-                placeholder="Masukkan topik skripsi anda"
-                />
-
-                <label for="transkrip">Unggah Transkrip Nilai</label>
-                <label class="upload12-btn">
-                <input type="file" id="transkrip" />
-                <span>📤 Upload file</span>
-                </label>
-
-                <button id="submit12-btn" type="submit" class="submit12-btn">
-                Kirim
-                </button>
-            </div>
+                    <label for="transkrip">Transkrip (Link Google Drive)</label>
+                    <input
+                    type="text"
+                    id="transkrip"
+                    placeholder="Masukkan catatan atau link transkrip nilai"
+                    />
+                    <button id="submit12-btn" type="submit" class="submit12-btn">
+                    Kirim
+                    </button>
+                </div>
             </div>
 
             <div id="quest-alert" class="quest-alert">
@@ -484,7 +483,7 @@
             const nama = document.getElementById('nama').value;
             const npm = document.getElementById('npm').value;
             const topik = document.getElementById('topik').value;
-            const transkripFile = document.getElementById('transkrip').files[0];
+            const transkrip = document.getElementById('transkrip').value;
 
             if (!nama || !npm || !topik) {
                 alert('⚠️ Mohon lengkapi semua field yang wajib diisi!');
@@ -494,7 +493,7 @@
             userData.nama = nama;
             userData.npm = npm;
             userData.topik = topik;
-            userData.transkrip = transkripFile ? transkripFile.name : 'Belum diunggah';
+            userData.transkrip = transkrip || 'Tidak diisi';
 
             updateDataDisplay();
 
@@ -537,19 +536,6 @@
 
             if (saveData()) {
                 closePopup('popup-level12');
-            }
-        });
-
-        document.getElementById('transkrip').addEventListener('change', function(e) {
-            const fileName = e.target.files[0]?.name;
-            const uploadBtn = document.querySelector('.upload12-btn span');
-
-            if (fileName) {
-                uploadBtn.textContent = `📄 ${fileName}`;
-                uploadBtn.style.color = '#48bb78';
-            } else {
-                uploadBtn.textContent = '📤 Upload file';
-                uploadBtn.style.color = 'white';
             }
         });
 

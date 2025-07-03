@@ -23,7 +23,6 @@
 
         <main class="main">
         <header>
-            <div></div>
             <div class="top-right-icons">
             <button class="icon-button"><i class="fa-solid fa-bell"></i></button>
             <img src="{{ asset('images/Mentoring/profile-dashboard.jpg') }}" alt="Profile" class="profile-image" />
@@ -39,32 +38,32 @@
 
         <div class="mentoring-form-container">
             <form class="mentoring-form">
-            <label>Judul Mentoring</label>
-            <input type="text" placeholder="Masukkan Judul Mentoring" value="Draft BAB II" readonly />
+                <label>Judul Mentoring</label>
+                <input type="text" value="{{ $mentoring->topic }}" readonly/>
 
-            <label>Pilih Dosen Pembimbing</label>
-            <input type="text" value="1. Pratama Wirya Atmaja, S.Kom., M.Kom." readonly />
+                <label>Pilih Dosen Pembimbing</label>
+                <input type="text" value="{{ $mentoring->jenis_bimbingan }}" readonly/>
 
-            <label>Pilih tanggal mentoring</label>
-            <input type="text" value="19 Mei 2025" readonly />
+                <label>Pilih tanggal mentoring</label>
+                <input type="text" value="{{ \Carbon\Carbon::parse($mentoring->proposed_date)->translatedFormat('d F Y') }}" readonly/>
 
-            <label>Jam Mentoring</label>
-            <input type="text" value="14:00" readonly />
+                <label>Jam Mentoring</label>
+                <input type="text" value="{{ $mentoring->proposed_date }}" readonly/>
 
-            <label>File</label>
-            <div class="file-preview">
-                <i class="fa-solid fa-file"></i>
-                <span>Draft Proposal BAB II.pdf</span>
-            </div>
+                <label>File</label>
+                <div class="file-preview">
+                    <i class="fa-solid fa-file"></i>
+                    <span>{{ $mentoring->file_name ?? 'File tidak tersedia' }}</span>
+                </div>
 
-            <div class="form-actions">
-                <form action="{{ route('mentoring.destroy', $mentoring->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="delete-button" onclick="return confirm('Apakah Anda yakin ingin menghapus jadwal ini?')">Hapus</button>
-                </form>
-                <a href="{{ route('mentoring.1') }}" class="submit-button">Okay</a>
-            </div>
+                <div class="form-actions">
+                    <form action="{{ route('mentoring.destroy', $mentoring->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="delete-button" onclick="return confirm('Apakah Anda yakin ingin menghapus jadwal ini?')">Hapus</button>
+                    </form>
+                    <a href="{{ route('mentoring.1') }}" class="submit-button">Okay</a>
+                </div>
             </form>
         </div>
         </main>

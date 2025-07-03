@@ -75,8 +75,27 @@
                     <p>Seminar Proposal Batch Mei – Pendaftaran dibuka hingga 28 Mei!</p>
                 </div>
                 <div class="card history">
-                    <strong>🗝️ Riwayat bimbingan</strong>
-                    <p>12 Mei 2025 – 13.00 WIB<br />Pendahuluan (Bab 1) - Revisi</p>
+                    <strong>🗝️ Riwayat Bimbingan</strong>
+                    @forelse ($mentoringHistory as $item)
+                        <div class="history-item" style="padding: 10px 0;">
+                            <p style="margin: 0;">
+                                <strong>{{ \Carbon\Carbon::parse($item->proposed_date)->translatedFormat('d F Y') }} {{ \Carbon\Carbon::parse($item->proposed_time)->format('H.i') }} WIB</strong>
+                                <br />
+                                {{ $item->topic }} - <span style="font-weight: bold;">{{ $item->status }}</span>
+                            </p>
+                        </div>
+                        @if (!$loop->last)
+                            <hr style="border: 0; height: 1px; background-color: #eeeeee; margin: 0;">
+                        @endif
+                    @empty
+                        <p>Belum ada riwayat bimbingan.</p>
+                    @endforelse
+
+                    @if(isset($mentoringHistory) && $mentoringHistory->isNotEmpty())
+                        <a href="{{ route('mentoring.1') }}" style="display: block; text-align: center; margin-top: 10px; font-weight: bold; text-decoration: none; color: #007bff;">
+                            Lihat Semua
+                        </a>
+                    @endif
                 </div>
                 <div class="card quest">
                     <strong>🪄 Quest</strong>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Models\Mentoring;
 
 class DashboardController extends Controller
 {
@@ -31,10 +31,17 @@ class DashboardController extends Controller
             ['rank' => '🥉', 'name' => 'M. Rafathar A.', 'level' => 10, 'consistency' => '92%'],
         ];
 
+        $mentoringHistory = Mentoring::where('user_id', Auth::id())
+                                ->whereIn('status', ['Selesai', 'Ditolak', 'Dibatalkan'])
+                                ->latest()
+                                ->take(3)
+                                ->get();
+
         return view('homepage', [
             'user' => $user,
             'rankingData' => $rankingData,
-            'userRank' => 156
+            'userRank' => 156,
+            'mentoringHistory' => $mentoringHistory,
         ]);
     }
 
