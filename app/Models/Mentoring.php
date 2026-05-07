@@ -13,7 +13,6 @@ class Mentoring extends Model
         'user_id',
         'topic',
         'proposed_date',
-        'proposed_time',
         'status',
         'jenis_bimbingan',
         'file_content',

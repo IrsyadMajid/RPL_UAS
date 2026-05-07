@@ -34,8 +34,6 @@ class AuthController extends Controller
                 return redirect()->route('login2');
             }
 
-        sleep(2);
-
         return back()->withErrors([
             'email' => 'Email atau password salah',
         ])->onlyInput('email');
@@ -92,7 +90,7 @@ class AuthController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => $request->password, // 'hashed' cast in User model handles hashing
         ]);
 
         return redirect('/login')->with('success', 'Akun berhasil dibuat. Silakan login.');
@@ -109,12 +107,14 @@ class AuthController extends Controller
             'email' => 'required|email|exists:users,email',
         ]);
 
-        return redirect()->route('resetPasswordForm')->with('email', $request->email);
+        $request->session()->put('reset_email', $request->email);
+
+        return redirect()->route('resetPasswordForm');
     }
 
-    public function showResetPasswordForm()
+    public function showResetPasswordForm(Request $request)
     {
-        $email = session('email');
+        $email = $request->session()->get('reset_email');
 
         if (!$email) {
             return redirect()->route('lupaPassword')->withErrors('Email tidak ditemukan. Silakan coba lagi.');
@@ -125,20 +125,28 @@ class AuthController extends Controller
 
     public function resetPasswordManual(Request $request)
     {
+        $email = $request->session()->get('reset_email');
+
+        if (!$email || $email !== $request->email) {
+            return redirect()->route('lupaPassword')->withErrors('Sesi tidak valid. Silakan coba lagi.');
+        }
+
         $request->validate([
             'email' => 'required|email|exists:users,email',
             'new_password' => 'required|string|min:6|confirmed',
         ]);
 
         $user = \App\Models\User::where('email', $request->email)->first();
-        $user->password = Hash::make($request->new_password);
+        $user->password = $request->new_password; // 'hashed' cast in User model handles hashing
         $user->save();
+
+        $request->session()->forget('reset_email');
 
         return redirect()->route('login')->with('success', 'Password berhasil diubah.');
     }
 
     public function logout(Request $request)
-        {
+    {
         if (Auth::guard('admin')->check()) {
             Auth::guard('admin')->logout();
         }

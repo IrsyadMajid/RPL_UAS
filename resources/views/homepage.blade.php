@@ -18,7 +18,10 @@
             <a href="{{ route('peringkat') }}"><img src="{{ asset('images/Dashboard/icon-peringkat.png') }}" alt="Icon Peringkat" /> Peringkat</a>
             <a href="{{ route('library') }}"><img src="{{ asset('images/Dashboard/icon-library.png') }}" alt="Icon Library" /> Library</a>
         </nav>
-        <a class="logout" href="{{ route('login') }}"><img src="{{ asset('images/Dashboard/icon-logout.png') }}" alt="Icon LogOut" /> Logout</a>
+        <form method="POST" action="{{ route('logout') }}" style="margin:0;padding:0;">
+            @csrf
+            <button type="submit" class="logout" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:8px;color:inherit;font:inherit;padding:0;"><img src="{{ asset('images/Dashboard/icon-logout.png') }}" alt="Icon LogOut" /> Logout</button>
+        </form>
         </aside>
 
         <main class="main">
@@ -79,7 +82,7 @@
                     @forelse ($mentoringHistory as $item)
                         <div class="history-item" style="padding: 10px 0;">
                             <p style="margin: 0;">
-                                <strong>{{ \Carbon\Carbon::parse($item->proposed_date)->translatedFormat('d F Y') }} {{ \Carbon\Carbon::parse($item->proposed_time)->format('H.i') }} WIB</strong>
+                                <strong>{{ \Carbon\Carbon::parse($item->proposed_date)->translatedFormat('d F Y H.i') }} WIB</strong>
                                 <br />
                                 {{ $item->topic }} - <span style="font-weight: bold;">{{ $item->status }}</span>
                             </p>

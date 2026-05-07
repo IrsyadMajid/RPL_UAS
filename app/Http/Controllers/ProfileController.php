@@ -36,7 +36,7 @@ class ProfileController extends Controller
         $user->gender = $validatedData['gender'] ?? $user->gender;
 
         if ($request->filled('password')) {
-            $user->password = Hash::make($validatedData['password']);
+            $user->password = $validatedData['password']; // 'hashed' cast in User model handles hashing
         }
 
         if ($request->hasFile('profile_photo')) {

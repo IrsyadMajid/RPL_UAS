@@ -16,7 +16,7 @@
         <a href="{{ route('admin.a-mahasiswa') }}"><img src="{{ asset('images/Dosen_Dashboard/icon-mahasiswa.png') }}" alt="" /> Mahasiswa</a>
         <a href="{{ route('admin.a-bimbingan') }}" class="active"><img src="{{ asset('images/Dosen_Dashboard/icon-bimbingan.png') }}" alt="" /> Bimbingan</a>
         </nav>
-        <a class="logout" href="{{ route('login') }}"><img src="{{ asset('images/Dosen_Dashboard/icon-logout.png') }}" alt="" /> Logout</a>
+        <form method="POST" action="{{ route('logout') }}" style="margin:0;padding:0;">@csrf<button type="submit" class="logout" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:8px;color:inherit;font:inherit;padding:0;"><img src="{{ asset('images/Dosen_Dashboard/icon-logout.png') }}" alt="" /> Logout</button></form>
         </aside>
 
         <main class="main">

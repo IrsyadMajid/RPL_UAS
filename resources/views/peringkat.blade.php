@@ -28,9 +28,7 @@
                 ><img src="{{ asset('images/Peringkat/icon-library.png') }}" alt="Icon Library" /> Library</a
             >
             </nav>
-            <a class="logout" href="{{ route('login') }}"
-            ><img src="{{ asset('images/Peringkat/icon-logout.png') }}" alt="Icon Log Out" /> Logout</a
-            >
+            <form method="POST" action="{{ route('logout') }}" style="margin:0;padding:0;">@csrf<button type="submit" class="logout" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:8px;color:inherit;font:inherit;padding:0;"><img src="{{ asset('images/Peringkat/icon-logout.png') }}" alt="Icon Log Out" /> Logout</button></form>
         </aside>
 
         <main class="main">
