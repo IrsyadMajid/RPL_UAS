@@ -6,24 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Menjalankan proses pembuatan skema tabel 'penggunas'.
+     * Catatan: Tabel ini awalnya dirancang untuk profil pengguna umum sebelum dialihkan menggunakan tabel default 'users'.
+     */
     public function up(): void
     {
         Schema::create('penggunas', function (Blueprint $table) {
-            $table->id();
-            $table->string('username')->unique();
-            $table->string('fullname');
-            $table->string('email')->unique();
-            $table->string('phone')->nullable();
-            $table->string('password');
-            $table->string('gender')->nullable();
-            $table->string('profile_photo')->nullable();
+            $table->id();                                    // Primary Key unik
+            $table->string('username')->unique();            // Username unik untuk login
+            $table->string('fullname');                      // Nama Lengkap Pengguna
+            $table->string('email')->unique();               // Email unik
+            $table->string('phone')->nullable();             // Nomor HP (opsional)
+            $table->string('password');                      // Password terenkripsi
+            $table->string('gender')->nullable();            // Jenis Kelamin
+            $table->string('profile_photo')->nullable();     // Foto profil (opsional)
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps();                            // Waktu pembuatan data (created_at, updated_at)
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Membatalkan migrasi dengan menghapus tabel 'penggunas'.
      */
     public function down(): void
     {

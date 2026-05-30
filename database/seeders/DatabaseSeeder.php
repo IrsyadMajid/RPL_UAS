@@ -3,18 +3,17 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * PUSAT PENGISIAN DATABASE (Database Seeder Orchestrator).
+     * Mengeksekusi seeder kustom secara berurutan saat menjalankan perintah 'php artisan db:seed'.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // Memanggil seeder kustom untuk mengisi data awal mahasiswa (UserSeeder) dan dosen pembimbing (AdminSeeder)
         $this->call([
             UserSeeder::class,
             AdminSeeder::class,

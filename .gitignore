@@ -1,4 +1,5 @@
 /.phpunit.cache
+.phpunit.result.cache
 /node_modules
 /public/build
 /public/hot
@@ -9,9 +10,7 @@
 .env
 .env.backup
 .env.production
-.env.example
 .phpactor.json
-.phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
@@ -22,3 +21,5 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+*.zip

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,9 +11,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
+     * Kolom database yang diperbolehkan untuk diisi secara massal (Mass Assignment).
      */
     protected $fillable = [
         'name',
@@ -24,14 +21,12 @@ class User extends Authenticatable
         'password',
         'gender',
         'profile_photo',
-        'level',
-        'xp',
+        'level', // Menyimpan level saat ini (Integer)
+        'xp',    // Menyimpan akumulasi Experience Points mahasiswa (Integer)
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
+     * Menyembunyikan atribut ketika data model diubah menjadi format JSON/Array.
      */
     protected $hidden = [
         'password',
@@ -39,40 +34,40 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * Casting tipe data kolom database ke dalam tipe objek PHP secara otomatis.
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'password' => 'hashed', // LOGIKA ENKRIPSI OTOMATIS: Mengenkripsi string password menjadi Hash bcrypt saat disimpan
         'level' => 'integer',
         'xp' => 'integer',
     ];
 
     /**
-     * Get level name based on current level.
+     * ELOQUENT ACCESSOR: Menentukan julukan kasta/nama wilayah RPG berdasarkan level mahasiswa saat ini.
+     * Mengakses properti ini secara dinamis melalui `$user->level_name` pada Controller atau View.
      */
     public function getLevelNameAttribute()
     {
+        // Peta visual petualangan skripsi
         $levelNames = [
-            1 => 'Gerbang Arcana',
-            2 => 'Mencari Mentor',
-            3 => 'Ritual Judul',
-            4 => 'Awal Perjalanan',
-            5 => 'Duel Proposal',
-            6 => 'Lembah Revisi Abadi',
-            7 => 'Lembah Revisi Abadi',
-            8 => 'Lembah Revisi Abadi',
-            9 => 'Lembah Revisi Abadi',
-            10 => 'Sidang Suci Arcana',
+            1 => 'Gerbang Arcana',        // Awal mendaftar dan melengkapi profile
+            2 => 'Mencari Mentor',        // Mencari & mencocokkan Dosen Pembimbing
+            3 => 'Ritual Judul',          // Tahap pengajuan proposal judul skripsi
+            4 => 'Awal Perjalanan',       // Penulisan Bab 1 (Pendahuluan)
+            5 => 'Duel Proposal',         // Menghadapi Ujian Seminar Proposal (Sempro)
+            6 => 'Lembah Revisi Abadi',   // Proses revisi Sempro dan penulisan Bab 2
+            7 => 'Lembah Revisi Abadi',   // Penulisan Bab 3 (Metodologi) & revisi
+            8 => 'Lembah Revisi Abadi',   // Tahap implementasi/Bab 4 & revisi
+            9 => 'Lembah Revisi Abadi',   // Penyusunan kesimpulan Bab 5 & draf akhir
+            10 => 'Sidang Suci Arcana',   // Pertempuran puncak: Sidang Skripsi (Pendadaran)!
         ];
 
-        return $levelNames[$this->level] ?? 'Transcendent';
+        return $levelNames[$this->level] ?? 'Transcendent'; // Julukan jika melebihi level 10
     }
 
     /**
-     * Calculate XP needed for the next level.
+     * Menghitung target XP yang dibutuhkan mahasiswa untuk naik ke tingkat berikutnya.
      */
     public function getXpForNextLevelAttribute()
     {
@@ -80,18 +75,20 @@ class User extends Authenticatable
     }
 
     /**
-     * Get XP threshold for a specific target level.
+     * Menghitung ambang batas XP kumulatif untuk level target tertentu.
+     * * Level 1-10: Kenaikan linear sederhana (butuh +10 XP per naik level).
+     * * Level 11 ke atas: Menggunakan kelipatan tambahan yang semakin besar (+10 XP ekstra per level tambahan).
      */
     public function getXpForLevel($targetLevel)
     {
         if ($targetLevel <= 1) return 10;
 
-        // Level 2-10: 10 XP per level (10, 20, 30, ..., 100)
+        // Level 2-10: membutuhkan akumulasi XP = level * 10 (10, 20, 30, ..., 100 XP)
         if ($targetLevel <= 10) {
             return $targetLevel * 10;
         }
 
-        // Level 11+: incremental XP
+        // Level 11+: Kenaikan progresif kuadratis
         $xpRequired = 100;
         $increment = 10;
 
@@ -104,10 +101,12 @@ class User extends Authenticatable
     }
 
     /**
-     * Calculate level from total XP.
+     * Menghitung konversi level secara terbalik berdasarkan total XP kumulatif yang dipunyai.
+     * Berguna untuk menentukan level aktual mahasiswa saat terjadi penambahan XP baru.
      */
     public function calculateLevelFromXp($totalXp)
     {
+        // Cek linear cepat untuk level awal 1 sampai 10
         if ($totalXp < 10) return 1;
         if ($totalXp < 20) return 2;
         if ($totalXp < 30) return 3;
@@ -119,6 +118,7 @@ class User extends Authenticatable
         if ($totalXp < 90) return 9;
         if ($totalXp < 100) return 10;
 
+        // Perhitungan iteratif dinamis untuk level di atas 10
         $level = 10;
         $xpRequired = 100;
         $increment = 10;
@@ -133,7 +133,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Update the user's level based on their current XP.
+     * Memperbarui level mahasiswa saat ini di database dengan mencocokkan total XP-nya.
      */
     public function updateLevel()
     {
@@ -141,12 +141,18 @@ class User extends Authenticatable
     }
 
     /**
-     * Add XP to this user and recalculate their level.
+     * Method utama untuk menambahkan XP mahasiswa dan menyinkronkan level serta menyimpannya.
+     * Pemicu kenaikan tingkat ini biasanya bersumber dari penyelesaian quest atau aktivitas bimbingan.
      */
     public function addXp(int $amount): void
     {
+        // 1. Tambahkan jumlah XP baru ke akumulasi yang sudah ada
         $this->xp = ($this->xp ?? 0) + $amount;
+        
+        // 2. LOGIKA LEVELING: Hitung ulang level berdasarkan total XP yang baru
         $this->updateLevel();
+        
+        // 3. Simpan perubahan ke database secara atomik
         $this->save();
     }
 }

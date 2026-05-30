@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // --- INISIALISASI ELEMEN DOM TINGKATAN PETUALANGAN ---
+  
+  // Elemen Tingkat 1 (Gerbang Arcana)
   const level1 = document.getElementById("level-1");
   const popup1 = document.getElementById("popup-level1");
   const nextQuestBtn = document.getElementById("after-popuplvl1");
@@ -6,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const submitBtn12 = document.getElementById("submit12-btn");
   const questAlert = document.getElementById("quest-alert");
   const questAlert2 = document.getElementById("quest-alert2");
+  
+  // Elemen Tingkat 2 (Mencari Mentor)
   const level2 = document.getElementById("level-2");
   const popup2 = document.getElementById("popup-level2");
   const nextQuestBtn2 = document.getElementById("after-popuplvl2");
@@ -13,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const submitBtn21 = document.getElementById("submit21-pembimbing");
   const questAlert3 = document.getElementById("quest-alert3");
   const questAlert4 = document.getElementById("quest-alert4");
+  
+  // Elemen Tingkat 3 (Ritual Judul)
   const level3 = document.getElementById("level-3");
   const popup3 = document.getElementById("popup-level3");
   const nextQuestBtn3 = document.getElementById("after-popuplvl3");
@@ -20,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const submitBtn31 = document.getElementById("submit31-judul");
   const questAlert5 = document.getElementById("quest-alert5");
   const questAlert6 = document.getElementById("quest-alert6");
+  
+  // Elemen Tingkat 4 (Awal Perjalanan / Bab 1)
   const level4 = document.getElementById("level-4");
   const popup4 = document.getElementById("popup-level4");
   const nextQuestBtn4 = document.getElementById("after-popuplvl4");
@@ -27,15 +36,20 @@ document.addEventListener("DOMContentLoaded", function () {
   const questAlert7 = document.getElementById("quest-alert7");
   const questAlert8 = document.getElementById("quest-alert8");
 
+  // --- LOGIKA EVENT LISTENERS UNTUK POPUP INTERAKTIF ---
+
+  // Tingkat 1: Klik tingkat 1 memunculkan modal pengantar
   level1?.addEventListener("click", () => {
     popup1.style.display = "flex";
   });
 
+  // Klik tombol lanjut memicu modal pengerjaan berikutnya
   nextQuestBtn?.addEventListener("click", () => {
     popup1.style.display = "none";
     popup12.style.display = "flex";
   });
 
+  // Mengumpulkan tugas tingkat 1, menyembunyikan modal, dan menampilkan notifikasi reward XP
   submitBtn12?.addEventListener("click", (e) => {
     e.preventDefault();
     popup12.style.display = "none";
@@ -43,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     showQuestAlert2();
   });
 
+  // Tingkat 2: Klik tingkat 2 memunculkan modal pencarian dospem
   level2?.addEventListener("click", () => {
     popup2.style.display = "flex";
   });
@@ -59,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     showQuestAlert4();
   });
 
+  // Tingkat 3: Klik tingkat 3 memunculkan modal pengajuan judul
   level3?.addEventListener("click", () => {
     popup3.style.display = "flex";
   });
@@ -75,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     showQuestAlert6();
   });
 
+  // Tingkat 4: Klik tingkat 4 memunculkan modal Bab 1
   level4?.addEventListener("click", () => {
     popup4.style.display = "flex";
   });
