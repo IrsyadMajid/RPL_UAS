@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="320" alt="Laravel Logo"><br>
   <h1 align="center">🎮 BIMA: Bimbingan Mahasiswa Informatika (Gamified Edition)</h1>
   <p align="center">
-    <strong>Platform Bimbingan Tugas Akhir Tematik RPG untuk Mahasiswa Informatika UPN "Veteran" Jawa Timur</strong>
+    <strong>RPG-Themed Thesis Mentoring Platform for Informatics Students of UPN "Veteran" Jawa Timur</strong>
   </p>
 </p>
 
@@ -15,104 +15,104 @@
 
 ---
 
-## 📖 Tentang BIMA Gamifikasi
+## 📖 About BIMA Gamification
 
-**BIMA (Bimbingan Mahasiswa Informatika)** adalah platform bimbingan skripsi dan tugas akhir yang dikembangkan khusus untuk program studi **Informatika UPN "Veteran" Jawa Timur**. 
+**BIMA (Bimbingan Mahasiswa Informatika)** is a thesis and final project mentoring platform developed specifically for the **Informatics study program at UPN "Veteran" Jawa Timur**.
 
-Perbedaan paling mencolok dan inovatif pada versi BIMA ini adalah **penambahan unsur gamifikasi dan alur cerita (*storyline*) fantasi RPG**. Menulis skripsi sering kali dipandang sebagai proses yang melelahkan, penuh tekanan, dan membosankan. BIMA hadir untuk mengubah paradigma tersebut dengan mengemas setiap babak penulisan skripsi menjadi sebuah petualangan epik!
+The most prominent and innovative feature of this version of BIMA is the **addition of gamification elements and an RPG (Role-Playing Game) fantasy storyline**. Writing a thesis is often seen as a tedious, stressful, and exhausting process. BIMA changes this paradigm by turning each phase of thesis writing into an epic adventure!
 
-Setiap langkah akademis direpresentasikan sebagai tingkatan level dan wilayah kekuasaan mistis:
-*   **Level 1 (Gerbang Arcana):** Memulai pengisian profil dan persiapan.
-*   **Level 2 (Mencari Mentor):** Pencarian dosen pembimbing yang tepat.
-*   **Level 3 (Ritual Judul):** Merumuskan dan mengajukan judul skripsi.
-*   **Level 5 (Duel Proposal):** Melangsungkan Ujian Seminar Proposal.
-*   **Level 6 - 9 (Lembah Revisi Abadi):** Fase bimbingan draf intensif dan revisi tiada akhir.
-*   **Level 10 (Sidang Suci Arcana):** Pertempuran pamungkas di Ujian Sidang Skripsi untuk meraih gelar Sarjana Komputer!
-
----
-
-## 🚀 Perjalanan Belajar Developer (Developer's Journey)
-
-> 🎓 *“Setiap master dulunya adalah seorang pemula yang menolak untuk menyerah.”*
-
-Program ini merupakan sarana pembelajaran pribadi bagi saya untuk **mengenal dan menggunakan framework Laravel untuk pertama kalinya**. 
-
-Sebagai langkah awal di dunia pengembangan web berskala penuh:
-*   Pada awalnya, masih terdapat banyak **redundansi kode** dan keputusan desain arsitektur yang belum sepenuhnya saya pahami dengan matang.
-*   Banyak konsep bawaan Laravel yang mulanya terasa asing dan membingungkan bagi saya sebagai pembuat kode.
-*   Namun, seiring berjalannya waktu, pengerjaan proyek, dan penelusuran dokumentasi, saya mulai mengerti secara mendalam bagaimana komponen-komponen Laravel saling terintegrasi — mulai dari *Routing*, *Eloquent ORM*, *Session State*, hingga *Multi-Guard Authentication*.
-
-Aplikasi ini adalah bukti nyata dari proses pembelajaran yang dinamis, di mana kode merepresentasikan evolusi pemahaman saya dari baris pertama hingga selesai!
-
-Oleh karena itu, **program ini masih memerlukan banyak sekali pembenahan, refactoring, dan pengembangan lebih lanjut di masa mendatang**. Di masa depan, fokus pengembangan akan ditujukan pada pembersihan redundansi kode, optimalisasi arsitektur agar lebih modular, penambahan fitur gamifikasi baru yang lebih interaktif, serta peningkatan sistem keamanan secara menyeluruh.
+Each academic milestone is represented by a character level and a mystical realm of control:
+*   **Level 1 (Arcana Gate):** Setting up the profile and initial preparations.
+*   **Level 2 (Seeking a Mentor):** Searching and matching with the right thesis advisor.
+*   **Level 3 (Title Ritual):** Formulating and submitting the thesis proposal title.
+*   **Level 5 (Proposal Duel):** Undergoing the Seminar Proposal Exam.
+*   **Level 6 - 9 (Valley of Eternal Revisions):** The intense draft-writing phase and dealing with endless revisions.
+*   **Level 10 (Sacred Arcana Session):** The final battle—the Thesis Defense Exam to earn the Bachelor of Computer Science (S.Kom) degree!
 
 ---
 
-## 🏛️ Ikhtisar Arsitektur MVC
+## 🚀 Developer's Learning Journey
 
-BIMA dibangun dengan arsitektur **Model-View-Controller (MVC)** standar industri Laravel untuk memisahkan logika data, tampilan antarmuka, dan pemrosesan aksi secara bersih:
+> 🎓 *“Every master was once a beginner who refused to give up.”*
 
-*   **📂 Model (M):** Terletak di `app/Models/`. Mengelola skema tabel data. Di dalamnya terdapat logika gamifikasi inti (seperti perhitungan kenaikan level dinamis dan penambahan XP mahasiswa di [User.php](app/Models/User.php) serta pengajuan draf bimbingan di [Mentoring.php](app/Models/Mentoring.php)).
-*   **🖥️ View (V):** Terletak di `resources/views/`. Menggunakan Blade Engine untuk merender UI interaktif, termasuk 10 halaman *Storyline Intro* berantai (`storylogin/`), visualisasi peta skripsi (`peta/`), leaderboard peringkat XP mahasiswa (`peringkat.blade.php`), serta dasbor analitik admin.
-*   **🎮 Controller (C):** Terletak di `app/Http/Controllers/`. Bertindak sebagai otak operasional yang memproses permintaan HTTP, memicu penambahan XP dari penyelesaian Quest harian ([DashboardController.php](file:///c:/Users/TUF/RPL_UAS/app/Http/Controllers/DashboardController.php)), dan mengontrol alur login bertahap ([AuthController.php](file:///c:/Users/TUF/RPL_UAS/app/Http/Controllers/AuthController.php)).
+This program is a personal learning medium for me to **learn and use the Laravel framework for the very first time**.
 
-> 📘 **Dokumentasi Lengkap MVC:** Detail diagram alir data, relasi Eloquent, serta analisis mendalam per file dapat Anda baca di:
-> 👉 **[Dokumentasi Lengkap Struktur MVC BIMA](docs/MVC_ARCHITECTURE.md)**
+As a starting point in the world of full-scale web development:
+*   In the beginning, there was still a lot of **code redundancy** and architectural design choices that I did not fully understand.
+*   Many of Laravel's built-in concepts felt unfamiliar and confusing to me as the developer.
+*   However, over time, through project implementation, and by studying the documentation, I began to deeply understand how Laravel's components integrate—from Routing, Eloquent ORM, Session State, to Multi-Guard Authentication.
 
----
+This application is living proof of a dynamic learning process, where the code represents the evolution of my understanding from the first line to completion!
 
-## ✨ Fitur Utama Platform
-
-1.  **🏰 Peta Kemajuan Skripsi (Visual Progress):** Visualisasi berbentuk peta petualangan interaktif (`peta1` & `peta2`) untuk melihat sejauh mana progres tulisan draf skripsi.
-2.  **⭐ Akumulasi XP & Kenaikan Level:** Setiap kali menyelesaikan target skripsi atau quest harian, mahasiswa mendapatkan XP yang mendongkrak level mereka beserta nama julukan RPG-nya.
-3.  **🏆 Papan Peringkat (Leaderboard):** Memacu motivasi persahabatan antar mahasiswa Informatika lewat kompetisi sehat perolehan level dan konsistensi mingguan.
-4.  **🎭 Multi-Step Login Storyline:** Proses otentikasi login bertahap yang dinamis (`login2` s/d `login4`), dibalut narasi cerita fantasi pembuka yang imersif.
-5.  **📅 Pengajuan Bimbingan & Draft:** Mahasiswa dapat mengajukan jadwal bimbingan tatap muka atau melampirkan teks draf secara langsung ke dalam sistem.
-6.  **📊 Dasbor Dosen (Game Master):** Dashboard analitik canggih bagi dosen koordinator untuk melihat grafik mingguan bimbingan mahasiswa dan melakukan *Approve / Reject* antrean bimbingan secara cepat.
+Please note that **this program still requires a lot of fixes, refactoring, and further development in the future**. Future development plans will focus on clean-ups of code redundancy, optimizing the architecture to be more modular, adding new interactive gamification elements, and enhancing overall system security.
 
 ---
 
-## 🛠️ Panduan Instalasi & Menjalankan Aplikasi
+## 🏛️ MVC Architecture Overview
 
-Ikuti langkah-langkah di bawah ini untuk menjalankan proyek BIMA di komputer lokal Anda:
+BIMA is built with the industry-standard **Model-View-Controller (MVC)** pattern to cleanly separate data logic, user interface, and action handling:
 
-### Prasyarat
+*   **📂 Model (M):** Located in `app/Models/`. Manages the database tables. It contains the core gamification logic (such as dynamic level calculations and user XP increments in [User.php](app/Models/User.php) as well as mentoring draft applications in [Mentoring.php](app/Models/Mentoring.php)).
+*   **🖥️ View (V):** Located in `resources/views/`. Uses the Blade engine to render the interactive UI, including 10 sequential Storyline Intro pages (`storylogin/`), thesis progress maps (`peta/`), student XP rankings leaderboard (`peringkat.blade.php`), and the admin dashboard.
+*   **🎮 Controller (C):** Located in `app/Http/Controllers/`. Acts as the operational brain that handles HTTP requests, triggers XP rewards upon completing daily Quests ([DashboardController.php](file:///c:/Users/TUF/RPL_UAS/app/Http/Controllers/DashboardController.php)), and controls the multi-step login flow ([AuthController.php](file:///c:/Users/TUF/RPL_UAS/app/Http/Controllers/AuthController.php)).
+
+> 📘 **Complete MVC Documentation:** For details on data flows, Eloquent relationships, and deep code analysis of each file, refer to:
+> 👉 **[Complete BIMA MVC Structure Documentation](docs/MVC_ARCHITECTURE.md)**
+
+---
+
+## ✨ Key Features
+
+1.  **🏰 Thesis Progress Map (Visual Progress):** An interactive adventure map visualization (`peta1` & `peta2`) to track the progress of the thesis draft.
+2.  **⭐ XP Accumulation & Leveling:** Every time students complete a thesis target or daily quest, they earn XP which increases their level and updates their RPG rank title.
+3.  **🏆 Leaderboard:** Boosts healthy competition and friendly motivation among Informatics students through level rankings and weekly consistency metrics.
+4.  **🎭 Multi-Step Login Storyline:** A dynamic step-by-step authentication process (`login2` to `login4`), wrapped in an immersive opening fantasy narrative.
+5.  **📅 Mentoring & Draft Submissions:** Students can schedule face-to-face meetups or directly submit their thesis draft text into the system.
+6.  **📊 Lecturer Dashboard (Game Master):** An advanced analytical dashboard for the coordinator to view weekly student bimbingan graphs and quickly approve or reject mentoring queues.
+
+---
+
+## 🛠️ Installation & Setup Guide
+
+Follow these steps to run the BIMA project on your local machine:
+
+### Prerequisites
 *   PHP `>= 8.2`
 *   Composer
 *   Node.js & NPM
 *   Database Server (MySQL / MariaDB / PostgreSQL)
 
-### Langkah-Langkah
+### Setup Steps
 
-1.  **Clone / Buka Repositori**
-    Pastikan Anda berada di direktori utama proyek:
+1.  **Clone / Open the Repository**
+    Ensure you are in the project root directory:
     ```bash
     cd RPL_UAS
     ```
 
-2.  **Instalasi Dependensi PHP**
+2.  **Install PHP Dependencies**
     ```bash
     composer install
     ```
 
-3.  **Instalasi Dependensi JavaScript & CSS**
+3.  **Install JavaScript & CSS Dependencies**
     ```bash
     npm install
     ```
 
-4.  **Konfigurasi Environment**
-    Salin file `.env.example` menjadi `.env`:
+4.  **Environment Configuration**
+    Copy the `.env.example` file to `.env`:
     ```bash
     cp .env.example .env
     ```
-    Buka file `.env` dan sesuaikan koneksi database Anda:
+    Open the `.env` file and adjust your database connection:
     ```env
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
-    DB_DATABASE=nama_database_anda
-    DB_USERNAME=username_database
-    DB_PASSWORD=password_database
+    DB_DATABASE=your_database_name
+    DB_USERNAME=your_database_username
+    DB_PASSWORD=your_database_password
     ```
 
 5.  **Generate Application Key**
@@ -120,30 +120,30 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan proyek BIMA di komputer lok
     php artisan key:generate
     ```
 
-6.  **Migrasi Database & Seeding**
-    Jalankan migrasi untuk membuat seluruh tabel (termasuk kolom level, xp, dan admin):
+6.  **Database Migration & Seeding**
+    Run migrations to create all tables (including level, xp, and admin columns):
     ```bash
     php artisan migrate
     ```
-    *(Opsional)* Jika ada seeder untuk data awal mahasiswa dan admin:
+    *(Optional)* If there is seeder data for default students and admins:
     ```bash
     php artisan db:seed
     ```
 
-7.  **Jalankan Server Lokal**
-    Buka dua terminal terpisah:
-    *   **Terminal 1 (Menjalankan Backend Laravel):**
+7.  **Run Local Servers**
+    Open two separate terminals:
+    *   **Terminal 1 (Run Laravel Backend):**
         ```bash
         php artisan serve
         ```
-    *   **Terminal 2 (Menjalankan Asset compiler Vite):**
+    *   **Terminal 2 (Run Vite Asset Compiler):**
         ```bash
         npm run dev
         ```
 
-8.  **Akses Web**
-    Buka browser Anda dan akses tautan:
+8.  **Access the Web Application**
+    Open your browser and navigate to:
     `http://127.0.0.1:8000`
 
 ---
-*Dibuat dengan 💖 sebagai bagian dari perjalanan menguasai Laravel. Selamat berpetualang menyelesaikan skripsi di dunia BIMA!*
+*Made with 💖 as part of the journey to master Laravel. Happy adventuring on your thesis in the world of BIMA!*
