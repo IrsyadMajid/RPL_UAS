@@ -44,6 +44,8 @@ Sebagai langkah awal di dunia pengembangan web berskala penuh:
 
 Aplikasi ini adalah bukti nyata dari proses pembelajaran yang dinamis, di mana kode merepresentasikan evolusi pemahaman saya dari baris pertama hingga selesai!
 
+Oleh karena itu, **program ini masih memerlukan banyak sekali pembenahan, refactoring, dan pengembangan lebih lanjut di masa mendatang**. Di masa depan, fokus pengembangan akan ditujukan pada pembersihan redundansi kode, optimalisasi arsitektur agar lebih modular, penambahan fitur gamifikasi baru yang lebih interaktif, serta peningkatan sistem keamanan secara menyeluruh.
+
 ---
 
 ## 🏛️ Ikhtisar Arsitektur MVC
